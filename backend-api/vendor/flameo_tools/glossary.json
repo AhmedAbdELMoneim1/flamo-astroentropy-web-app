@@ -1,0 +1,914 @@
+{
+ "version": 1,
+ "status": "draft, to review (Round 15 P1)",
+ "note": "Definitions are drafts written from general knowledge of combustion; the source is the best passage in the corpus that uses the word (verbatim quote), for the reviewer to check. Each entry is to be edited once by a team reviewer, who adds a name and a date. No entry contains a number of its own.",
+ "entries": [
+  {
+   "term": "ignition",
+   "aliases": [
+    "ignite",
+    "ignitions"
+   ],
+   "definition": "Ignition is the moment a material starts to burn on its own after a heat source or spark raises it to the temperature where a flame can form.",
+   "why_in_space": "In a spacecraft there is no buoyant flow to carry heat away, so where ignition happens and how fast the flame grows can differ from on Earth.",
+   "finding_regex": "ignit",
+   "diagram": null,
+   "status": "draft, to review",
+   "reviewed_by": null,
+   "reviewed_on": null,
+   "source": {
+    "src_id": "F-P2-15727cbf-1-2",
+    "kind": "card",
+    "page": 5,
+    "title": "Evaluation of burning rate in microgravity based on the fuel regression, flame area, and spread rate",
+    "quote": "08 mg/cm2-s, especially in the flame stage after initial ignition."
+   }
+  },
+  {
+   "term": "flame spread rate",
+   "aliases": [
+    "spread rate",
+    "flame spread",
+    "rate of flame spread",
+    "spread velocity",
+    "how fast flame spreads"
+   ],
+   "definition": "Flame spread rate is how fast the burning edge moves across a material, measured as a distance per second.",
+   "why_in_space": "It tells how quickly a small fire can grow, and in microgravity it depends strongly on the air flow and oxygen level.",
+   "finding_regex": "spread",
+   "diagram": "flame_spread",
+   "status": "draft, to review",
+   "reviewed_by": null,
+   "reviewed_on": null,
+   "source": {
+    "src_id": "F-P2-09a7bcf4-2-0",
+    "kind": "card",
+    "page": 12,
+    "title": "Opposed flow flame spread over thermally thick solid fuels: buoyant flow suppression, stretch rate theory, and the regressive burning regime",
+    "quote": "6 mm thick samples, the maximum flame spread rate occurs at 18."
+   }
+  },
+  {
+   "term": "opposed flow",
+   "aliases": [
+    "opposed-flow",
+    "opposed flow flame spread",
+    "counterflow"
+   ],
+   "definition": "Opposed flow means the air moves toward the flame front, against the direction the flame is spreading.",
+   "why_in_space": "In a spacecraft the ventilation sets the air flow direction, so it decides which kind of spread a fire shows.",
+   "finding_regex": "opposed",
+   "diagram": "flame_spread",
+   "status": "draft, to review",
+   "reviewed_by": null,
+   "reviewed_on": null,
+   "source": {
+    "src_id": "F-P2-49e96981-1-0",
+    "kind": "card",
+    "page": 5,
+    "title": "The Effect of Gravity on Flame Spread over PMMA Cylinders",
+    "quote": "In microgravity, as the opposed flow velocity is increased, the flame spread rate first increases, and then decreases."
+   }
+  },
+  {
+   "term": "concurrent flow",
+   "aliases": [
+    "concurrent-flow",
+    "concurrent flow flame spread",
+    "co-flow spread"
+   ],
+   "definition": "Concurrent flow means the air moves in the same direction as the flame is spreading, carrying hot gas ahead of the flame.",
+   "why_in_space": "Flame growth with the air flow can accelerate, which is why ventilation direction matters on a station.",
+   "finding_regex": "concurrent",
+   "diagram": "flame_spread",
+   "status": "draft, to review",
+   "reviewed_by": null,
+   "reviewed_on": null,
+   "source": {
+    "src_id": "F-P2-e90afcd0-1-0",
+    "kind": "card",
+    "page": 6,
+    "title": "BASS Science Documents: Flammability Aspectsof Fabric USNational Combustion.2013",
+    "quote": "Concurrent-flow flame spread rate increases linearly with flow speed, and linear curve fits are shown."
+   }
+  },
+  {
+   "term": "cool flame",
+   "aliases": [
+    "cool flames",
+    "cool-flame"
+   ],
+   "definition": "A cool flame is a faint, low-temperature flame, much dimmer than a normal flame, that burns fuel only partly.",
+   "why_in_space": "In microgravity some fuels keep burning as cool flames that are hard to see, so a fire can go unnoticed.",
+   "finding_regex": "cool flame",
+   "diagram": null,
+   "status": "draft, to review",
+   "reviewed_by": null,
+   "reviewed_on": null,
+   "source": {
+    "src_id": "F-P2-73973316-1-0",
+    "kind": "card",
+    "page": 7,
+    "title": "Spherical gas-fueled cool diffusion flames",
+    "quote": "Cool flames were not observed for oxygen mole fractions below about 0."
+   }
+  },
+  {
+   "term": "extinction",
+   "aliases": [
+    "flame extinction",
+    "extinguish",
+    "extinguishment",
+    "blow off",
+    "quenching"
+   ],
+   "definition": "Extinction is when a flame goes out, for example when the oxygen or the fuel supply is too low or the flow is too strong or too weak.",
+   "why_in_space": "Knowing what makes a flame go out in space guides how a fire is put out with the air and agents available.",
+   "finding_regex": "extinct|extinguish|quench",
+   "diagram": null,
+   "status": "draft, to review",
+   "reviewed_by": null,
+   "reviewed_on": null,
+   "source": {
+    "src_id": "F-P2-1b689582-1-0",
+    "kind": "card",
+    "page": 9,
+    "title": "CFI Reports: CFI Science Final Report",
+    "quote": "Increase helium dilution leads to earlier cool flame extinction giving a larger extinction diameter for n-dodecane."
+   }
+  },
+  {
+   "term": "self-extinguish",
+   "aliases": [
+    "self extinguished",
+    "self-extinguished",
+    "self extinguishing",
+    "SE"
+   ],
+   "definition": "A flame self-extinguishes when it goes out by itself with the flow still on, without anyone stopping the air.",
+   "why_in_space": "It shows the conditions under which a material does not sustain a fire in a given atmosphere.",
+   "finding_regex": "self-extinguish",
+   "diagram": null,
+   "status": "draft, to review",
+   "reviewed_by": null,
+   "reviewed_on": null,
+   "source": {
+    "src_id": "F-P2-7725dbd6-1-0",
+    "kind": "card",
+    "page": 2,
+    "title": "ACME BRE Reports: Dissertation PD revised",
+    "quote": "All flames burning in 21% by volume oxygen self-extinguished within 40 s."
+   }
+  },
+  {
+   "term": "soot",
+   "aliases": [
+    "soot onset",
+    "sooting"
+   ],
+   "definition": "Soot is the black carbon particles a flame makes when fuel burns incompletely.",
+   "why_in_space": "Soot is what makes smoke and it changes how flames radiate heat, so it matters for smoke detection and for hazards.",
+   "finding_regex": "soot",
+   "diagram": null,
+   "status": "draft, to review",
+   "reviewed_by": null,
+   "reviewed_on": null,
+   "source": {
+    "src_id": "F-P2-c6245e84-1-0",
+    "kind": "card",
+    "page": 6,
+    "title": "Effects of Inert Placement (Z st) on Soot and Radiative Heat Flux in Turbulent Diffusion Flames",
+    "quote": "At low Zst, soot inception starts early and soot grows rapidly with distance from the burner."
+   }
+  },
+  {
+   "term": "smoke point",
+   "aliases": [
+    "smoke-point"
+   ],
+   "definition": "The smoke point is the fuel flow at which a flame just starts to release soot out of its tip.",
+   "why_in_space": "It is a standard way to compare how sooty fuels are, and it shifts in microgravity.",
+   "finding_regex": "smoke point",
+   "diagram": null,
+   "status": "draft, to review",
+   "reviewed_by": null,
+   "reviewed_on": null,
+   "source": {
+    "src_id": "F-P2-c139e0ce-1-1",
+    "kind": "card",
+    "page": 7,
+    "title": "SPICE Reports: SPICE 30-Day Post Flight Report",
+    "quote": "Smoke points of coflowing nonbuoyant flames increase with decreasing burner diameter in the Smoke Points in Coflow Experiment (SPICE)."
+   }
+  },
+  {
+   "term": "limiting oxygen index",
+   "aliases": [
+    "LOI",
+    "oxygen index",
+    "limiting oxygen",
+    "limiting oxygen concentration",
+    "LOC"
+   ],
+   "definition": "The limiting oxygen index is the lowest oxygen concentration at which a material still supports a flame.",
+   "why_in_space": "Spacecraft atmospheres can hold more oxygen than air, which lowers the margin before a material keeps burning.",
+   "finding_regex": "limiting oxygen|oxygen index",
+   "diagram": null,
+   "status": "draft, to review",
+   "reviewed_by": null,
+   "reviewed_on": null,
+   "source": {
+    "src_id": "F-P2-73973316-1-0",
+    "kind": "card",
+    "page": 7,
+    "title": "Spherical gas-fueled cool diffusion flames",
+    "quote": "4, which is consistent with a limiting oxygen index for cool flames."
+   }
+  },
+  {
+   "term": "oxygen partial pressure",
+   "aliases": [
+    "partial pressure",
+    "ppO2",
+    "pO2",
+    "partial pressure of oxygen"
+   ],
+   "definition": "Oxygen partial pressure is the share of the total pressure that oxygen supplies; it is the oxygen fraction times the total pressure.",
+   "why_in_space": "A lower-pressure habitat can hold more percent oxygen with a similar partial pressure, so both numbers are needed to compare atmospheres.",
+   "finding_regex": "partial pressure",
+   "diagram": null,
+   "status": "draft, to review",
+   "reviewed_by": null,
+   "reviewed_on": null,
+   "source": {
+    "src_id": null,
+    "note": "no passage found yet: the reviewer adds a source or the challenge text"
+   }
+  },
+  {
+   "term": "microgravity",
+   "aliases": [
+    "micro gravity",
+    "zero gravity",
+    "freefall",
+    "free fall",
+    "weightlessness",
+    "low gravity"
+   ],
+   "definition": "Microgravity is the near-weightless condition in orbit, where objects and gases do not rise or sink.",
+   "why_in_space": "Without buoyancy hot gas does not rise away from a flame, so flames are rounder and burn differently than on Earth.",
+   "finding_regex": "microgravity",
+   "diagram": "buoyant_vs_micro",
+   "status": "draft, to review",
+   "reviewed_by": null,
+   "reviewed_on": null,
+   "source": {
+    "src_id": "F-P2-49e96981-1-1",
+    "kind": "card",
+    "page": 6,
+    "title": "The Effect of Gravity on Flame Spread over PMMA Cylinders",
+    "quote": "At XO2 = 21%, the flame spread is faster in normal gravity than in microgravity, but below XO2 = 19% the flame spread becomes faster in microgravity than in normal gravity."
+   }
+  },
+  {
+   "term": "normal gravity",
+   "aliases": [
+    "earth gravity",
+    "1g",
+    "normal-gravity",
+    "terrestrial gravity",
+    "ground gravity"
+   ],
+   "definition": "Normal gravity is the ordinary gravity on Earth, where hot gas rises and pulls fresh air into a flame.",
+   "why_in_space": "Ground tests in normal gravity are the reference that flight tests are compared with.",
+   "finding_regex": "normal gravity|normal-gravity",
+   "diagram": "buoyant_vs_micro",
+   "status": "draft, to review",
+   "reviewed_by": null,
+   "reviewed_on": null,
+   "source": {
+    "src_id": "F-P2-49e96981-1-1",
+    "kind": "card",
+    "page": 6,
+    "title": "The Effect of Gravity on Flame Spread over PMMA Cylinders",
+    "quote": "At XO2 = 21%, the flame spread is faster in normal gravity than in microgravity, but below XO2 = 19% the flame spread becomes faster in microgravity than in normal gravity."
+   }
+  },
+  {
+   "term": "buoyancy",
+   "aliases": [
+    "buoyant flow",
+    "buoyant convection",
+    "natural convection"
+   ],
+   "definition": "Buoyancy is the upward push on hot gas in gravity, which drives the flow of air into a flame on Earth.",
+   "why_in_space": "In orbit buoyancy is almost absent, so flow comes only from ventilation or the flame's own expansion.",
+   "finding_regex": "buoyan",
+   "diagram": "buoyant_vs_micro",
+   "status": "draft, to review",
+   "reviewed_by": null,
+   "reviewed_on": null,
+   "source": {
+    "src_id": "F-P2-df609836-1-1",
+    "kind": "card",
+    "page": 3,
+    "title": "SAME modeling Reports: NNX17AF08A Final Report",
+    "quote": "Without buoyancy or settling, the microgravity smoke plume is spatially symmetric and contains very large particles (> 40 um)."
+   }
+  },
+  {
+   "term": "burner stream",
+   "aliases": [
+    "oxidizer stream",
+    "burner oxygen",
+    "stream oxygen"
+   ],
+   "definition": "The burner stream is the gas fed through the burner nozzle; its oxygen can differ from the oxygen of the surrounding chamber.",
+   "why_in_space": "A test's burner-stream oxygen is not the cabin atmosphere, so the two must not be mixed when reading the data.",
+   "finding_regex": "burner|oxidizer stream",
+   "diagram": "ambient_vs_stream",
+   "status": "draft, to review",
+   "reviewed_by": null,
+   "reviewed_on": null,
+   "source": {
+    "src_id": null,
+    "note": "no passage found yet: the reviewer adds a source or the challenge text"
+   }
+  },
+  {
+   "term": "ambient oxygen",
+   "aliases": [
+    "ambient atmosphere",
+    "ambient",
+    "chamber oxygen",
+    "atmosphere oxygen"
+   ],
+   "definition": "Ambient oxygen is the oxygen percent of the gas filling the whole test chamber, like the air of a cabin.",
+   "why_in_space": "Only ambient oxygen compares directly with the oxygen of a spacecraft or habitat atmosphere.",
+   "finding_regex": "ambient",
+   "diagram": "ambient_vs_stream",
+   "status": "draft, to review",
+   "reviewed_by": null,
+   "reviewed_on": null,
+   "source": {
+    "src_id": "F-P2-050c1187-2-0",
+    "kind": "card",
+    "page": 12,
+    "title": "Theoretical analysis and predictions of burning in microgravity using a burning emulator",
+    "quote": "Radiative heat flux decreases with mass flux, increases with ambient oxygen mole fraction, decreases with heat of combustion, and has similar pressure dependence except lower ambient pressure allows longer burn time."
+   }
+  },
+  {
+   "term": "PMMA",
+   "aliases": [
+    "acrylic",
+    "plexiglass",
+    "polymethyl methacrylate"
+   ],
+   "definition": "PMMA is a clear plastic, also sold as acrylic or Plexiglas, that burns cleanly and is a common reference material in flame tests.",
+   "why_in_space": "Spacecraft use clear plastics for windows and covers, and its burning is well studied.",
+   "finding_regex": "PMMA",
+   "diagram": null,
+   "status": "draft, to review",
+   "reviewed_by": null,
+   "reviewed_on": null,
+   "source": {
+    "src_id": "F-P2-7847b90c-1-0",
+    "kind": "card",
+    "page": 5,
+    "title": "Piloted ignition delay times on optically thin PMMA cylinders",
+    "quote": "The estimated critical heat flux for clear PMMA rods, 18 kW m-2 is larger than the accepted value for PMMA, which is close to 10 kW m-2."
+   }
+  },
+  {
+   "term": "SIBAL",
+   "aliases": [
+    "cotton fiberglass",
+    "cotton-fiberglass blend",
+    "sibal fabric"
+   ],
+   "definition": "SIBAL is a fabric of cotton and fiberglass used as a fire test material in the Saffire experiments.",
+   "why_in_space": "Fabrics resemble clothing and cargo bags, so they show how a textile fire behaves in a spacecraft.",
+   "finding_regex": "SIBAL",
+   "diagram": null,
+   "status": "draft, to review",
+   "reviewed_by": null,
+   "reviewed_on": null,
+   "source": {
+    "src_id": null,
+    "note": "no passage found yet: the reviewer adds a source or the challenge text"
+   }
+  },
+  {
+   "term": "Nomex",
+   "aliases": [
+    "nomex fabric"
+   ],
+   "definition": "Nomex is a heat-resistant aramid fabric used in protective clothing.",
+   "why_in_space": "Crew clothing and covers use materials like it, so its burning in space is of direct interest.",
+   "finding_regex": "Nomex",
+   "diagram": null,
+   "status": "draft, to review",
+   "reviewed_by": null,
+   "reviewed_on": null,
+   "source": {
+    "src_id": null,
+    "note": "no passage found yet: the reviewer adds a source or the challenge text"
+   }
+  },
+  {
+   "term": "Kapton",
+   "aliases": [
+    "polyimide"
+   ],
+   "definition": "Kapton is a thin, heat-resistant polyimide film used to insulate wires and equipment.",
+   "why_in_space": "Wire insulation is a likely ignition source in spacecraft, which is why it is tested.",
+   "finding_regex": "Kapton|polyimide",
+   "diagram": null,
+   "status": "draft, to review",
+   "reviewed_by": null,
+   "reviewed_on": null,
+   "source": {
+    "src_id": null,
+    "note": "no passage found yet: the reviewer adds a source or the challenge text"
+   }
+  },
+  {
+   "term": "Teflon",
+   "aliases": [
+    "PTFE"
+   ],
+   "definition": "Teflon is a low-friction plastic, PTFE, used for wire insulation and seals.",
+   "why_in_space": "It is common in spacecraft wiring, so how it burns matters for fire safety.",
+   "finding_regex": "Teflon|PTFE",
+   "diagram": null,
+   "status": "draft, to review",
+   "reviewed_by": null,
+   "reviewed_on": null,
+   "source": {
+    "src_id": null,
+    "note": "no passage found yet: the reviewer adds a source or the challenge text"
+   }
+  },
+  {
+   "term": "droplet combustion",
+   "aliases": [
+    "droplet burning",
+    "burning droplet",
+    "droplet flame"
+   ],
+   "definition": "Droplet combustion is the burning of a small liquid fuel drop, which is studied as a simple model of how liquid fuels burn.",
+   "why_in_space": "In microgravity a droplet burns as a round, symmetric flame, which makes it a clean test of combustion theory.",
+   "finding_regex": "droplet",
+   "diagram": null,
+   "status": "draft, to review",
+   "reviewed_by": null,
+   "reviewed_on": null,
+   "source": {
+    "src_id": "F-P2-a67a4663-2-0",
+    "kind": "card",
+    "page": 14,
+    "title": "On the spherically symmetrical combustion of methyl decanoate droplets and comparisons with detailed numerical modeling",
+    "quote": "Results of droplet size evolution show that MD droplet combustion burning rate reaches a quasi-steady value of 0."
+   }
+  },
+  {
+   "term": "inverse flame",
+   "aliases": [
+    "inverse diffusion flame",
+    "inverted flame",
+    "inside-out flame",
+    "inside out flame"
+   ],
+   "definition": "An inverse flame has the oxidizer inside and the fuel outside, the opposite of a normal flame.",
+   "why_in_space": "It is a way to study how flames behave when the usual arrangement of fuel and air is reversed.",
+   "finding_regex": "inverse",
+   "diagram": null,
+   "status": "draft, to review",
+   "reviewed_by": null,
+   "reviewed_on": null,
+   "source": {
+    "src_id": null,
+    "note": "no passage found yet: the reviewer adds a source or the challenge text"
+   }
+  },
+  {
+   "term": "diffusion flame",
+   "aliases": [
+    "non-premixed flame",
+    "candle flame",
+    "laminar diffusion flame"
+   ],
+   "definition": "A diffusion flame burns where fuel and air meet and mix by spreading into each other, as in a candle.",
+   "why_in_space": "Most accidental fires are diffusion flames, so they are the main target of the experiments.",
+   "finding_regex": "diffusion flame",
+   "diagram": null,
+   "status": "draft, to review",
+   "reviewed_by": null,
+   "reviewed_on": null,
+   "source": {
+    "src_id": "F-P1-159-cards-3-0",
+    "kind": "card",
+    "page": 7,
+    "title": "Spherical gas-fueled cool diffusion flames",
+    "quote": "Cool diffusion flames were not observed for ethane or propane, nor at pressures below 2 bar."
+   }
+  },
+  {
+   "term": "premixed flame",
+   "aliases": [
+    "premixed"
+   ],
+   "definition": "A premixed flame burns a mixture of fuel and air that was mixed before it burns.",
+   "why_in_space": "It is the other basic kind of flame and is used for comparison.",
+   "finding_regex": "premixed",
+   "diagram": null,
+   "status": "draft, to review",
+   "reviewed_by": null,
+   "reviewed_on": null,
+   "source": {
+    "src_id": "F-P2-d0de7392-1-0",
+    "kind": "card",
+    "page": 3,
+    "title": "SUPPLEMENTARY MATERIAL The radical index and the effect of oxygen concentration on non-premixed cool flame extinction of large n-alkanes",
+    "quote": "The extinction strain rates of these n-alkane non-premixed cool flames increase with the increase of both fuel and oxygen mole fractions."
+   }
+  },
+  {
+   "term": "laminar flow",
+   "aliases": [
+    "laminar"
+   ],
+   "definition": "Laminar flow is smooth, orderly gas movement without turbulence.",
+   "why_in_space": "Flames in these experiments are usually laminar so that results can be compared and modeled.",
+   "finding_regex": "laminar",
+   "diagram": null,
+   "status": "draft, to review",
+   "reviewed_by": null,
+   "reviewed_on": null,
+   "source": {
+    "src_id": null,
+    "note": "no passage found yet: the reviewer adds a source or the challenge text"
+   }
+  },
+  {
+   "term": "forced flow",
+   "aliases": [
+    "flow speed",
+    "air flow",
+    "airflow",
+    "flow velocity",
+    "ventilation flow"
+   ],
+   "definition": "Forced flow is air pushed past the burning material by a fan or ventilation, at a chosen speed.",
+   "why_in_space": "In orbit the ventilation is the main air flow a fire sees, so flow speed strongly shapes it.",
+   "finding_regex": "flow",
+   "diagram": null,
+   "status": "draft, to review",
+   "reviewed_by": null,
+   "reviewed_on": null,
+   "source": {
+    "src_id": null,
+    "note": "no passage found yet: the reviewer adds a source or the challenge text"
+   }
+  },
+  {
+   "term": "ignition delay",
+   "aliases": [
+    "time to ignition",
+    "ignition time"
+   ],
+   "definition": "Ignition delay is the time between exposing a fuel to heat and the flame appearing.",
+   "why_in_space": "A long delay can hide a developing fire, a short one gives little time to react.",
+   "finding_regex": "ignition delay|ignition time",
+   "diagram": null,
+   "status": "draft, to review",
+   "reviewed_by": null,
+   "reviewed_on": null,
+   "source": {
+    "src_id": "F-P2-3b447f1c-1-0",
+    "kind": "card",
+    "page": 13,
+    "title": "Computational Modeling of Unsupported and Fiber-Supported n-Heptane Droplet Combustion in Reduced Gravity: A Study of Fiber Effects",
+    "quote": "The current simulation ignition delay times are closer to the experimental results of Tanabe et al."
+   }
+  },
+  {
+   "term": "autoignition",
+   "aliases": [
+    "auto-ignition",
+    "spontaneous ignition",
+    "self-ignition"
+   ],
+   "definition": "Autoignition is ignition of a fuel without a spark or flame, just from being hot enough.",
+   "why_in_space": "Hot equipment could ignite nearby fuel this way, which is a prevention concern.",
+   "finding_regex": "autoignit|auto-ignit",
+   "diagram": null,
+   "status": "draft, to review",
+   "reviewed_by": null,
+   "reviewed_on": null,
+   "source": {
+    "src_id": null,
+    "note": "no passage found yet: the reviewer adds a source or the challenge text"
+   }
+  },
+  {
+   "term": "thermally thin",
+   "aliases": [
+    "thin fuel",
+    "thin sample"
+   ],
+   "definition": "A thermally thin material is so thin that its whole thickness heats up at once as the flame passes.",
+   "why_in_space": "Cloth and films are thin, and thin materials burn differently than thick ones.",
+   "finding_regex": "thermally thin|thin",
+   "diagram": null,
+   "status": "draft, to review",
+   "reviewed_by": null,
+   "reviewed_on": null,
+   "source": {
+    "src_id": null,
+    "note": "no passage found yet: the reviewer adds a source or the challenge text"
+   }
+  },
+  {
+   "term": "thermally thick",
+   "aliases": [
+    "thick fuel",
+    "thick sample"
+   ],
+   "definition": "A thermally thick material is thick enough that only its surface heats while the inside stays cool.",
+   "why_in_space": "Thick plastic parts react more slowly to a flame than thin cloth.",
+   "finding_regex": "thermally thick|thick",
+   "diagram": null,
+   "status": "draft, to review",
+   "reviewed_by": null,
+   "reviewed_on": null,
+   "source": {
+    "src_id": null,
+    "note": "no passage found yet: the reviewer adds a source or the challenge text"
+   }
+  },
+  {
+   "term": "oxidizer",
+   "aliases": [
+    "oxidiser"
+   ],
+   "definition": "An oxidizer is the gas, usually oxygen, that a fuel reacts with to burn.",
+   "why_in_space": "The oxygen level of the cabin is the oxidizer of any fire in it.",
+   "finding_regex": "oxidizer",
+   "diagram": null,
+   "status": "draft, to review",
+   "reviewed_by": null,
+   "reviewed_on": null,
+   "source": {
+    "src_id": "F-P2-d0de7392-1-1",
+    "kind": "card",
+    "page": 3,
+    "title": "SUPPLEMENTARY MATERIAL The radical index and the effect of oxygen concentration on non-premixed cool flame extinction of large n-alkanes",
+    "quote": "The extinction limits at the temperature of oxidizer-side burner of 550 K are higher than those at 300 K."
+   }
+  },
+  {
+   "term": "diluent",
+   "aliases": [
+    "inert gas",
+    "balance gas",
+    "nitrogen diluent"
+   ],
+   "definition": "A diluent is an inert gas, such as nitrogen, helium or carbon dioxide, mixed in with the oxygen.",
+   "why_in_space": "The diluent changes how a flame burns and which gas fills a habitat.",
+   "finding_regex": "diluent",
+   "diagram": null,
+   "status": "draft, to review",
+   "reviewed_by": null,
+   "reviewed_on": null,
+   "source": {
+    "src_id": null,
+    "note": "no passage found yet: the reviewer adds a source or the challenge text"
+   }
+  },
+  {
+   "term": "flammability",
+   "aliases": [
+    "flammable",
+    "how flammable"
+   ],
+   "definition": "Flammability is how easily a material ignites and how well a flame keeps burning on it in given conditions.",
+   "why_in_space": "It depends on the atmosphere, so a material that is hard to burn in air may burn in a richer cabin.",
+   "finding_regex": "flammab",
+   "diagram": null,
+   "status": "draft, to review",
+   "reviewed_by": null,
+   "reviewed_on": null,
+   "source": {
+    "src_id": "F-P2-7716e86d-1-0",
+    "kind": "card",
+    "page": 6,
+    "title": "Extended flammability limits of n-heptane/air mixtures with cool flames",
+    "quote": "The flammability limit is significantly extended by the presence of cool flames, and the cool flame branch is qualitatively similar to the hot flame branch, with its own flammability limit turning point."
+   }
+  },
+  {
+   "term": "smoke aerosol",
+   "aliases": [
+    "smoke particles",
+    "aerosol",
+    "smoke particle size",
+    "particle size"
+   ],
+   "definition": "Smoke aerosol is the cloud of tiny solid or liquid particles a fire releases.",
+   "why_in_space": "Detectors sense these particles, and in microgravity they can be different in size than on Earth.",
+   "finding_regex": "particle|aerosol|smoke",
+   "diagram": null,
+   "status": "draft, to review",
+   "reviewed_by": null,
+   "reviewed_on": null,
+   "source": {
+    "src_id": null,
+    "note": "no passage found yet: the reviewer adds a source or the challenge text"
+   }
+  },
+  {
+   "term": "smoke detection",
+   "aliases": [
+    "smoke detector",
+    "fire detection",
+    "detector"
+   ],
+   "definition": "Smoke detection senses the particles or gases of a fire early so the crew can respond.",
+   "why_in_space": "Detectors tuned on Earth may behave differently in microgravity, which is why it is tested.",
+   "finding_regex": "detect",
+   "diagram": null,
+   "status": "draft, to review",
+   "reviewed_by": null,
+   "reviewed_on": null,
+   "source": {
+    "src_id": null,
+    "note": "no passage found yet: the reviewer adds a source or the challenge text"
+   }
+  },
+  {
+   "term": "fire suppression",
+   "aliases": [
+    "suppression",
+    "suppressant",
+    "extinguisher",
+    "extinguishing agent",
+    "carbon dioxide extinguisher"
+   ],
+   "definition": "Fire suppression is putting a fire out, for example with a gas such as carbon dioxide that reduces the oxygen the flame can use.",
+   "why_in_space": "Spacecraft cannot use water freely, so which agent works in which atmosphere is a design question.",
+   "finding_regex": "suppress|extinguish",
+   "diagram": null,
+   "status": "draft, to review",
+   "reviewed_by": null,
+   "reviewed_on": null,
+   "source": {
+    "src_id": null,
+    "note": "no passage found yet: the reviewer adds a source or the challenge text"
+   }
+  },
+  {
+   "term": "pyrolysis",
+   "aliases": [
+    "pyrolyze",
+    "thermal decomposition"
+   ],
+   "definition": "Pyrolysis is the breakdown of a solid by heat into gases that can burn.",
+   "why_in_space": "A solid burns because it first releases fuel gas this way.",
+   "finding_regex": "pyroly",
+   "diagram": null,
+   "status": "draft, to review",
+   "reviewed_by": null,
+   "reviewed_on": null,
+   "source": {
+    "src_id": "F-P2-5ce2ce3f-1-1",
+    "kind": "card",
+    "page": 8,
+    "title": "Flame spread: Effects of microgravity and scale",
+    "quote": "For Saﬃre-3, the steady pyrolysis length is 5 cm, the steady spread rate is 2."
+   }
+  },
+  {
+   "term": "radiative heat loss",
+   "aliases": [
+    "radiation loss",
+    "radiative loss",
+    "radiative extinction"
+   ],
+   "definition": "Radiative heat loss is heat a flame loses as light and infrared radiation instead of warming its surroundings.",
+   "why_in_space": "In slow flows it can put a flame out, which is a main way flames die in microgravity.",
+   "finding_regex": "radiat",
+   "diagram": null,
+   "status": "draft, to review",
+   "reviewed_by": null,
+   "reviewed_on": null,
+   "source": {
+    "src_id": "F-P2-33fb224b-1-0",
+    "kind": "card",
+    "page": 7,
+    "title": "Soot and thin-filament pyrometry using a color digital camera",
+    "quote": "As the fuel concentration increases, the peak temperature decreases due to increased soot loading and resultant radiative heat loss."
+   }
+  },
+  {
+   "term": "psi",
+   "aliases": [
+    "psia",
+    "pounds per square inch",
+    "pressure unit"
+   ],
+   "definition": "Psi, pounds per square inch, is the unit of pressure used here; the ISS cabin is kept near the air pressure of sea level.",
+   "why_in_space": "Habitat and spacesuit pressures are set lower than sea level, so tests are described in psi.",
+   "finding_regex": null,
+   "diagram": null,
+   "status": "draft, to review",
+   "reviewed_by": null,
+   "reviewed_on": null,
+   "source": {
+    "src_id": "F-P2-4174bf23-1-0",
+    "kind": "card",
+    "page": 8,
+    "title": "Pressure Response in Enclosures During and After Large-Scale Flame Spread:  Testing and Modeling",
+    "quote": "7-psia initial pressure cheesecloth samples, the average burn-time obtained from radiometer data was 228 seconds during downward flame spread."
+   }
+  },
+  {
+   "term": "PSI (investigation)",
+   "aliases": [
+    "PSI data",
+    "principal investigator",
+    "investigation id",
+    "psi id"
+   ],
+   "definition": "A PSI in this data is one NASA experiment or investigation, such as BASS-II or Saffire-III, with its own tests and documents.",
+   "why_in_space": "Each investigation covers different materials and conditions, so the answers depend on which one is meant.",
+   "finding_regex": null,
+   "diagram": null,
+   "status": "draft, to review",
+   "reviewed_by": null,
+   "reviewed_on": null,
+   "source": {
+    "src_id": null,
+    "note": "no passage found yet: the reviewer adds a source or the challenge text"
+   }
+  },
+  {
+   "term": "flight and ground tests",
+   "aliases": [
+    "flight test",
+    "ground test",
+    "flight vs ground"
+   ],
+   "definition": "A flight test runs in orbit, in microgravity; a ground test runs on Earth in normal gravity, sometimes in a drop tower.",
+   "why_in_space": "Only flight tests show true microgravity behavior; ground tests are the comparison.",
+   "finding_regex": null,
+   "diagram": null,
+   "status": "draft, to review",
+   "reviewed_by": null,
+   "reviewed_on": null,
+   "source": {
+    "src_id": null,
+    "note": "no passage found yet: the reviewer adds a source or the challenge text"
+   }
+  },
+  {
+   "term": "partial gravity",
+   "aliases": [
+    "lunar gravity",
+    "moon gravity",
+    "mars gravity"
+   ],
+   "definition": "Partial gravity is a gravity between zero and Earth's, like the Moon's or Mars's.",
+   "why_in_space": "The data holds no partial-gravity combustion tests, so Moon or Mars surface fires are a known gap.",
+   "finding_regex": null,
+   "diagram": null,
+   "status": "draft, to review",
+   "reviewed_by": null,
+   "reviewed_on": null,
+   "source": {
+    "src_id": null,
+    "note": "no passage found yet: the reviewer adds a source or the challenge text"
+   }
+  },
+  {
+   "term": "spacesuit atmosphere",
+   "aliases": [
+    "suit atmosphere",
+    "suit pressure",
+    "EVA suit atmosphere"
+   ],
+   "definition": "A spacesuit atmosphere is nearly pure oxygen at a low pressure, far from the cabin air.",
+   "why_in_space": "Materials that resist fire in cabin air can burn differently in this atmosphere, and the data covers it only partly.",
+   "finding_regex": null,
+   "diagram": null,
+   "status": "draft, to review",
+   "reviewed_by": null,
+   "reviewed_on": null,
+   "source": {
+    "src_id": null,
+    "note": "no passage found yet: the reviewer adds a source or the challenge text"
+   }
+  }
+ ]
+}

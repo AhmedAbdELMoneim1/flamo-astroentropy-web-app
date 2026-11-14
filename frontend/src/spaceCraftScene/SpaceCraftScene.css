@@ -1,0 +1,282 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+/* Host wrapper: give the parent a size (or this fills it) */
+.cabin-host {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 240px;
+    background: #000;
+    overflow: hidden;
+}
+
+/* Everything below is scoped under .cs so it can't leak into the rest of the app */
+.cabin-host .cs {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    background: #000;
+    --ac: #7fb8ff;
+    --sp: 1;
+    font-family: 'Share Tech Mono', ui-monospace, monospace;
+    text-transform: uppercase;
+}
+
+.cabin-host .cs canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    transition: filter 0.3s;
+}
+
+.cabin-host .cs .ov {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    font-size: clamp(10px, 0.5vw + 7px, 15px);
+    color: #e8f2ff;
+}
+
+.cabin-host .cs .sv {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.cabin-host .cs .blk {
+    position: absolute;
+    inset: 0;
+    background: #000;
+    pointer-events: none;
+    opacity: 1;
+}
+
+.cabin-host .cs .ld {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 240px;
+    margin-left: -120px;
+    height: 2px;
+    background: #0d1424;
+}
+
+.cabin-host .cs .ld i {
+    display: block;
+    height: 100%;
+    width: 0;
+    background: var(--ac);
+    box-shadow: 0 0 8px var(--ac);
+}
+
+/* ---------- tag / panel ---------- */
+.cabin-host .cs .pn {
+    position: absolute;
+    left: 0;
+    top: 0;
+    visibility: hidden;
+    --c: var(--ac);
+    filter: drop-shadow(0 0 5px var(--c));
+}
+
+.cabin-host .cs .pn .b {
+    background: var(--c);
+    padding: 2px;
+    clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px);
+}
+
+.cabin-host .cs .pn .i {
+    background: rgba(7, 6, 13, 0.85);
+    padding: 5px 14px;
+    white-space: nowrap;
+    letter-spacing: 0.08em;
+    clip-path: polygon(11px 0, 100% 0, 100% calc(100% - 11px), calc(100% - 11px) 100%, 0 100%, 0 11px);
+}
+
+.cabin-host .cs .pn .b.g {
+    animation: cabin-gl calc(0.12s * var(--sp)) steps(2) 1;
+}
+
+@keyframes cabin-gl {
+    0% {
+        opacity: 0;
+        transform: translateX(-6px);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translateX(5px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* ---------- bracket ---------- */
+.cabin-host .cs .br {
+    position: absolute;
+    visibility: hidden;
+    --c: var(--ac);
+    background:
+        linear-gradient(var(--c), var(--c)) 0 0/14px 2px, linear-gradient(var(--c), var(--c)) 0 0/2px 14px,
+        linear-gradient(var(--c), var(--c)) 100% 0/14px 2px, linear-gradient(var(--c), var(--c)) 100% 0/2px 14px,
+        linear-gradient(var(--c), var(--c)) 0 100%/14px 2px, linear-gradient(var(--c), var(--c)) 0 100%/2px 14px,
+        linear-gradient(var(--c), var(--c)) 100% 100%/14px 2px, linear-gradient(var(--c), var(--c)) 100% 100%/2px 14px;
+    background-repeat: no-repeat;
+    filter: drop-shadow(0 0 4px var(--c));
+}
+
+.cabin-host .cs .br.s {
+    animation: cabin-sn calc(0.25s * var(--sp)) cubic-bezier(0.2, 1.7, 0.4, 1);
+}
+
+@keyframes cabin-sn {
+    from {
+        scale: 1.5;
+        opacity: 0;
+    }
+
+    to {
+        scale: 1;
+        opacity: 1;
+    }
+}
+
+/* ---------- scan lens (picture-in-picture) ---------- */
+.cabin-host .cs .lm {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    width: 260px;
+    height: 160px;
+    background: #000;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.cabin-host .cs .ln {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    width: 260px;
+    height: 160px;
+    box-sizing: border-box;
+    border: 2px solid var(--ac);
+    box-shadow: 0 0 8px var(--ac), inset 0 0 8px #0006;
+    opacity: 0;
+    pointer-events: none;
+    color: #e8f2ff;
+}
+
+.cabin-host .cs .ln .lh,
+.cabin-host .cs .ln .ll {
+    position: absolute;
+    left: 0;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    background: rgba(7, 6, 13, 0.85);
+    padding: 2px 8px;
+    color: var(--ac);
+}
+
+.cabin-host .cs .ln .lc {
+    position: absolute;
+    left: -2px;
+    top: -2px;
+    width: 260px;
+    height: 160px;
+    overflow: hidden;
+    font-size: 9px;
+    pointer-events: none;
+}
+
+.cabin-host .cs .ln .lc .pn .i {
+    padding: 2px 8px;
+}
+
+.cabin-host .cs .ln .lh {
+    top: 0;
+}
+
+.cabin-host .cs .ln .ll {
+    bottom: 0;
+    color: #e8f2ff;
+}
+
+.cabin-host .cs .ln i {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border: 2px solid var(--ac);
+}
+
+.cabin-host .cs .ln i:nth-of-type(1) {
+    left: -6px;
+    top: -6px;
+    border-right: 0;
+    border-bottom: 0;
+}
+
+.cabin-host .cs .ln i:nth-of-type(2) {
+    right: -6px;
+    top: -6px;
+    border-left: 0;
+    border-bottom: 0;
+}
+
+.cabin-host .cs .ln i:nth-of-type(3) {
+    left: -6px;
+    bottom: -6px;
+    border-right: 0;
+    border-top: 0;
+}
+
+.cabin-host .cs .ln i:nth-of-type(4) {
+    right: -6px;
+    bottom: -6px;
+    border-left: 0;
+    border-top: 0;
+}
+
+/* ---------- optional dev panel ---------- */
+.cabin-host .cabin-dev {
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    z-index: 9;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    max-width: 330px;
+    font: 11px 'Share Tech Mono', monospace;
+    opacity: 0.7;
+}
+
+.cabin-host .cabin-dev button {
+    font: inherit;
+    text-transform: uppercase;
+    color: #cfe0f5;
+    background: #0b111acc;
+    border: 1px solid #7fb8ff66;
+    padding: 3px 7px;
+    cursor: pointer;
+}
+
+.cabin-host .cabin-dev button:hover {
+    background: #7fb8ff44;
+}
+
+/* Ember robot (React <EmberHead/> portals into this box; the scene sets its size/position every frame) */
+.cabin-host .cs .cs-ember {
+    position: absolute;
+    left: 0;
+    top: 0;
+    visibility: hidden;
+    pointer-events: none;
+    will-change: transform;
+}

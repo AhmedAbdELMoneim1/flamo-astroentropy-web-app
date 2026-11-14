@@ -1,0 +1,60 @@
+:root { color-scheme: dark; font-family: system-ui, sans-serif; --accent: #ff3700; --card: #14141a; --line: #2a2a33; }
+body { margin: 0; background: #0b0b0f; color: #eee; }
+.muted { opacity: .6; margin: 0; }
+.error { color: #ff6b6b; }
+
+/* connect screen */
+.screen { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; }
+
+/* buttons */
+.btn { padding: 10px 20px; border-radius: 999px; border: 1px solid #333; background: #1a1a22; color: inherit; cursor: pointer; }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+.btn.danger { background: #3a1212; border-color: #6a2222; }
+
+/* app layout */
+.app { min-height: 100vh; display: grid; grid-template-columns: 300px 1fr; grid-template-rows: auto auto 1fr; gap: 16px; padding: 16px; box-sizing: border-box; }
+.alert, .topbar { grid-column: 1 / -1; }
+.topbar { display: flex; justify-content: space-between; align-items: center; }
+.viz { display: flex; align-items: center; gap: 12px; --lk-fg: var(--accent); }
+.state { opacity: .6; text-transform: capitalize; margin: 0; }
+.controls { display: flex; gap: 12px; }
+.side { display: flex; flex-direction: column; gap: 16px; }
+@media (max-width: 800px) { .app { grid-template-columns: 1fr; } }
+
+/* nav */
+.cat-nav { display: grid; gap: 8px; }
+.cat-tab { display: flex; align-items: center; gap: 10px; padding: 12px 14px; border-radius: 12px; border: 1px solid var(--line); background: var(--card); color: inherit; cursor: pointer; text-align: left; font: inherit; }
+.cat-tab.active { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent) inset; background: #20120e; }
+.cat-icon { font-size: 20px; }
+
+/* cards */
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 14px; display: grid; gap: 10px; }
+.card h3 { margin: 0; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; opacity: .6; }
+.cond { display: grid; gap: 4px; font-size: 13px; }
+.cond span { display: flex; justify-content: space-between; }
+.cond input[type=range] { accent-color: var(--accent); }
+.cond input:not([type=range]), .cond select { padding: 7px 9px; border-radius: 8px; border: 1px solid #333; background: #0f0f14; color: inherit; font: inherit; }
+.mission { margin: 0; display: grid; gap: 6px; font-size: 13px; }
+.mission div { display: flex; justify-content: space-between; }
+.mission dt { opacity: .6; text-transform: capitalize; } .mission dd { margin: 0; }
+.notes { margin: 0; padding-left: 18px; font-size: 13px; }
+.log { list-style: none; margin: 0; padding: 0; font: 11px ui-monospace, monospace; opacity: .55; }
+
+/* stage */
+.stage { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 18px; animation: enter .35s ease; }
+.stage.empty { align-items: center; justify-content: center; text-align: center; opacity: .7; }
+@keyframes enter { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.stage-head { display: flex; align-items: center; gap: 16px; }
+.stage-head h2 { margin: 0; font-size: 28px; }
+.stage-icon { font-size: 44px; }
+.headline { font-size: 22px; font-weight: 600; margin: 0; color: #ffb199; }
+.key-points { margin: 0; padding-left: 20px; display: grid; gap: 8px; font-size: 17px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { padding: 6px 14px; border-radius: 999px; border: 1px solid var(--line); background: transparent; color: inherit; cursor: pointer; font: inherit; font-size: 13px; }
+.chip.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+.chart-slot { flex: 1; min-height: 220px; border: 1px dashed #3a3a46; border-radius: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; opacity: .6; }
+
+/* emergency */
+.alert { background: #5a0f0f; border: 2px solid #ff4d4d; border-radius: 12px; padding: 14px 18px; animation: pulse 1.2s infinite; }
+.alert ol { margin: 8px 0; padding-left: 20px; }
+@keyframes pulse { 50% { box-shadow: 0 0 24px #ff4d4d88; } }

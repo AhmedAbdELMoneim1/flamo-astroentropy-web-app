@@ -1,0 +1,90 @@
+# The whole project: Postgres+pgvector (the RAG index), LiveKit, the API, the agent and the web server.
+#   cp .env.docker.example .env.docker   # fill it in
+#   docker compose --env-file .env.docker up -d --build
+# serving.db and the NASA documents are mounted, not baked into an image (see README_DEPLOY.md).
+name: flame
+
+x-env: &env
+  LIVEKIT_URL: ${LIVEKIT_URL:-ws://livekit:7880}          # LiveKit Cloud: wss://<project>.livekit.cloud (in .env.docker)
+  LIVEKIT_PUBLIC_URL: ${LIVEKIT_PUBLIC_URL:-ws://localhost}
+  POSTGRES_HOST: postgres
+  POSTGRES_PORT: "5432"
+  POSTGRES_USER: ${POSTGRES_USER:-paper}
+  POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-paper}
+  POSTGRES_MAIN_DB: ${POSTGRES_DB:-paper_rag}
+  FLAMEO_DB: /data/serving.db
+  DOCS_ROOT: /data/docs
+  TABLE_NAME: chunks_cohere
+  EMBEDDING_PROVIDER: cohere
+  EMBEDDING_SIZE: "1024"
+  EMBEDDING_MODEL_ID: embed-v4.0
+  CORS_ORIGINS: "*"
+
+x-backend: &backend
+  build: .
+  env_file: .env.docker
+  environment: *env
+  volumes:
+    - ${SERVING_DB:-./data/serving.db}:/data/serving.db:ro
+    - ${DOCS_DIR:-./data/docs}:/data/docs:ro
+    - rag_cache:/app/rag_cache
+    - logs:/app/logs
+  depends_on:
+    postgres: {condition: service_healthy}
+  restart: unless-stopped
+
+services:
+  postgres:
+    image: pgvector/pgvector:0.8.6-pg18-trixie
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-paper}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-paper}
+      POSTGRES_DB: ${POSTGRES_DB:-paper_rag}
+    volumes:
+      - pgdata:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-paper} -d ${POSTGRES_DB:-paper_rag}"]
+      interval: 5s
+      retries: 20
+    # not published: only the other containers (and `docker compose exec`) reach it
+    restart: unless-stopped
+
+  livekit:
+    profiles: [local-livekit]        # only when you run LiveKit yourself: docker compose --profile local-livekit up -d
+    image: livekit/livekit-server:latest
+    command: --config /etc/livekit.yaml
+    environment:
+      LIVEKIT_KEYS: "${LIVEKIT_API_KEY:-devkey}: ${LIVEKIT_API_SECRET:-devsecret-change-me-please-0123456789}"
+    volumes:
+      - ./deploy/livekit.yaml:/etc/livekit.yaml:ro
+    ports:
+      - "7881:7881"                 # media over TCP
+      - "50000-50100:50000-50100/udp"   # media over UDP
+    restart: unless-stopped
+
+  api:
+    <<: *backend
+    command: uvicorn src.api:app --host 0.0.0.0 --port 8000
+
+  agent:
+    <<: *backend
+    command: python -m src.agent start
+
+  web:
+    build:
+      context: .
+      dockerfile: deploy/Dockerfile.web
+    environment:
+      SITE_ADDRESS: ${SITE_ADDRESS:-:80}
+    ports:
+      - "127.0.0.1:${WEB_PORT:-8080}:80"     # only the host's nginx reaches it (nginx already owns 80/443 on the server)
+    volumes:
+      - caddy_data:/data
+    depends_on: [api]
+    restart: unless-stopped
+
+volumes:
+  pgdata:
+  rag_cache:
+  logs:
+  caddy_data:

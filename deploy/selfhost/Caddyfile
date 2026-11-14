@@ -1,0 +1,16 @@
+# SITE_ADDRESS = your domain (https, automatic certificate) or ":80" for plain http on a LAN.
+{$SITE_ADDRESS::80} {
+	encode gzip
+	handle /api/* {
+		reverse_proxy api:8000
+	}
+	# LiveKit signalling (websocket) goes through the same address, so the browser only needs wss://<domain>
+	handle /rtc* {
+		reverse_proxy livekit:7880
+	}
+	handle {
+		root * /srv
+		try_files {path} /index.html
+		file_server
+	}
+}

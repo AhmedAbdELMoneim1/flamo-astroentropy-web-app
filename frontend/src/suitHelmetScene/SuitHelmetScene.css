@@ -1,0 +1,441 @@
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&display=swap');
+
+/* Host wrapper: give the parent a size (or this fills it) */
+.suit-host {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 240px;
+    background: #000;
+    overflow: hidden;
+}
+
+/* Everything below is scoped under .suit-host so it can't leak into the rest of the app */
+.suit-host .su {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    background: #000;
+    font: 600 12px/1.3 'Chakra Petch', ui-monospace, monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #eaf3ff;
+    --a: #7fb8ff;
+    --w: #ffb347;
+}
+
+.suit-host .su.alert {
+    --a: #ff3b3b;
+}
+
+.suit-host .su canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* ---------- visor frame (SVG) ---------- */
+.suit-host .su .vsvg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.suit-host .su .vsvg .vr {
+    fill: none;
+    stroke: rgba(210, 225, 245, 0.16);
+    stroke-width: 1.5px;
+    vector-effect: non-scaling-stroke;
+}
+
+.suit-host .su .vsvg .vr2 {
+    display: none;
+    fill: none;
+    stroke: var(--a);
+    stroke-width: 1px;
+    stroke-opacity: 0.35;
+    vector-effect: non-scaling-stroke;
+}
+
+.suit-host .su .vsvg .vin {
+    fill: none;
+    stroke: #000;
+    stroke-opacity: 0.3;
+    stroke-width: 46px;
+    vector-effect: non-scaling-stroke;
+    filter: blur(14px);
+}
+
+.suit-host .su .vsvg .vst {
+    fill: none;
+    stroke: #05080c;
+    stroke-width: 13px;
+    vector-effect: non-scaling-stroke;
+    stroke-linejoin: miter;
+}
+
+.suit-host .su .vsvg .vst2 {
+    fill: none;
+    stroke: #2c3a4a;
+    stroke-width: 2px;
+    vector-effect: non-scaling-stroke;
+    transform: translate(-0.0035px, 0);
+}
+
+.suit-host .su.alert .vr {
+    stroke: #ff3b3b;
+    stroke-width: 2.5px;
+    animation: su-al 1s infinite;
+}
+
+@keyframes su-al {
+    50% {
+        filter: drop-shadow(0 0 24px #f33);
+    }
+}
+
+/* sun glare on the visor (clip-path is set inline by the scene) */
+.suit-host .su .glare {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(circle at var(--gx, 50%) var(--gy, 50%), rgba(255, 248, 230, 0.95), rgba(255, 240, 210, 0.25) 25%, transparent 55%);
+    opacity: 0;
+}
+
+/* ---------- HUD ---------- */
+.suit-host .su .hud {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.suit-host .su .pnl {
+    position: absolute;
+    background: #0b111ae0;
+    border-top: 3px solid var(--a);
+    border-left: 3px solid var(--a);
+    clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
+    padding: 8px 22px 8px 12px;
+    opacity: 0;
+    transition: opacity 0.6s, border-color 0.4s;
+    overflow: hidden;
+}
+
+.suit-host .su .pnl:before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(135deg, transparent 0 22px, color-mix(in srgb, var(--a) 12%, transparent) 22px 24px);
+}
+
+.suit-host .su.on .pnl,
+.suit-host .su.on .ret,
+.suit-host .su.on .tape {
+    opacity: 1;
+}
+
+.suit-host .su .pnl>* {
+    position: relative;
+}
+
+.suit-host .su .pnl h4 {
+    margin: 0 0 4px;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    color: var(--a);
+}
+
+.suit-host .su .r {
+    display: flex;
+    justify-content: space-between;
+    gap: 1em;
+    line-height: 1.7;
+}
+
+.suit-host .su .r em {
+    font-style: normal;
+    color: var(--a);
+}
+
+.suit-host .su .r em.w {
+    color: var(--w);
+}
+
+.suit-host .su .bar {
+    height: 5px;
+    background: rgba(255, 255, 255, 0.12);
+    margin: 2px 0 4px;
+}
+
+.suit-host .su .bar i {
+    display: block;
+    height: 100%;
+    background: var(--a);
+    box-shadow: 0 0 8px var(--a);
+}
+
+.suit-host .su .s-pl {
+    left: 14%;
+    top: 32%;
+    width: min(190px, 15vw);
+    transition-delay: 0.3s;
+}
+
+.suit-host .su .s-pr {
+    right: 14%;
+    top: 32%;
+    width: min(190px, 15vw);
+    transition-delay: 0.5s;
+}
+
+.suit-host .su .s-pf {
+    left: 50%;
+    bottom: 11%;
+    transform: translateX(-50%);
+    width: min(340px, 32vw);
+    transition-delay: 0.7s;
+    text-align: center;
+}
+
+.suit-host .su .s-pc {
+    left: 15.5%;
+    bottom: 21%;
+    width: min(230px, 17vw);
+    font-size: 11px;
+    text-transform: none;
+    letter-spacing: 0.03em;
+    line-height: 1.4;
+    transition-delay: 0.9s;
+}
+
+.suit-host .su .s-pc b {
+    color: var(--a);
+    letter-spacing: 0.12em;
+    font-size: 10px;
+    text-transform: uppercase;
+}
+
+.suit-host .su .s-pf .st {
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    color: var(--a);
+}
+
+.suit-host .su.alert .s-pf .st {
+    animation: su-bl 0.5s infinite;
+}
+
+@keyframes su-bl {
+    50% {
+        opacity: 0.3;
+    }
+}
+
+/* heading tape */
+.suit-host .su .tape {
+    position: absolute;
+    left: 50%;
+    top: 12%;
+    width: min(320px, 30vw);
+    height: 34px;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.6s 0.1s;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 25%, #000 75%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 25%, #000 75%, transparent);
+}
+
+.suit-host .su .tape i {
+    position: absolute;
+    inset: 0 0 14px 0;
+    background: repeating-linear-gradient(90deg, var(--a) 0 2px, transparent 2px 8px);
+}
+
+.suit-host .su .tape span {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+}
+
+.suit-host .su .tapemk {
+    position: absolute;
+    left: 50%;
+    top: 10.5%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-top-color: var(--a);
+}
+
+.suit-host .su .cross {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 26px;
+    height: 26px;
+    margin: -13px;
+    border: 1px solid color-mix(in srgb, var(--a) 70%, transparent);
+    border-radius: 50%;
+}
+
+.suit-host .su .cross:after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 3px;
+    height: 3px;
+    margin: -1.5px;
+    background: var(--a);
+    border-radius: 50%;
+}
+
+/* target lock on HAB-01 */
+.suit-host .su .ret {
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    transition: opacity 0.6s 1s;
+    display: none;
+    color: var(--a);
+    animation: su-pu 2s infinite;
+}
+
+@keyframes su-pu {
+    50% {
+        filter: brightness(1.5);
+    }
+}
+
+.suit-host .su .ret .bx {
+    position: absolute;
+    inset: 0;
+    --b: 2px solid var(--a);
+}
+
+.suit-host .su .ret .bx:before,
+.suit-host .su .ret .bx:after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+}
+
+.suit-host .su .ret .bx:before {
+    left: 0;
+    top: 0;
+    border-left: var(--b);
+    border-top: var(--b);
+}
+
+.suit-host .su .ret .bx:after {
+    right: 0;
+    bottom: 0;
+    border-right: var(--b);
+    border-bottom: var(--b);
+}
+
+.suit-host .su .ret .bx2 {
+    position: absolute;
+    inset: 0;
+}
+
+.suit-host .su .ret .bx2:before,
+.suit-host .su .ret .bx2:after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border: 2px solid var(--a);
+}
+
+.suit-host .su .ret .bx2:before {
+    right: 0;
+    top: 0;
+    border-left: 0;
+    border-bottom: 0;
+}
+
+.suit-host .su .ret .bx2:after {
+    left: 0;
+    bottom: 0;
+    border-right: 0;
+    border-top: 0;
+}
+
+.suit-host .su .ret .lb {
+    position: absolute;
+    left: calc(100% + 8px);
+    top: 0;
+    white-space: nowrap;
+    font-size: 11px;
+    line-height: 1.5;
+    background: #0b111acc;
+    padding: 4px 8px;
+    border-left: 2px solid var(--a);
+}
+
+.suit-host .su .ret .lb b {
+    color: var(--w);
+}
+
+/* boot screen */
+.suit-host .su .boot {
+    position: absolute;
+    inset: 0;
+    background: #000;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--a);
+}
+
+/* ---------- optional dev panel ---------- */
+.suit-host .suit-dev {
+    position: absolute;
+    left: 8px;
+    bottom: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    z-index: 9;
+}
+
+.suit-host .suit-dev button {
+    font: 11px ui-monospace, monospace;
+    background: #111;
+    color: #ccc;
+    border: 1px solid #444;
+    padding: 4px 8px;
+    cursor: pointer;
+}
+
+.suit-host .suit-dev button:hover {
+    background: #222;
+}
+
+@media (max-width: 900px) {
+
+    .suit-host .su .s-pl,
+    .suit-host .su .s-pr,
+    .suit-host .su .s-pc {
+        display: none;
+    }
+}

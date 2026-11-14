@@ -1,0 +1,50 @@
+# Example questions -> tool + arguments, for the agent's router (the agent's LLM picks from the tool docstrings; no text-to-SQL).
+version: 1
+examples:
+  get_investigation:
+    - {q: "What is BRE?", args: {psi: BRE}}
+    - {q: "What did PSI-69 test?", args: {psi: PSI-69}}
+    - {q: "Tell me about the FLEX experiment", args: {psi: FLEX}}
+  compare:
+    - {q: "Compare BASS and BASS-II", args: {psi_a: BASS, psi_b: BASS-II}}
+    - {q: "How do FLEX and CFI differ?", args: {psi_a: FLEX, psi_b: CFI}}
+  rank_materials:
+    - {q: "Which material is safest at 30 % O2?", args: {metric: spread rate, scenario: moon_base}}
+    - {q: "Rank materials by flame spread", args: {metric: spread rate}}
+    - {q: "What is the limiting oxygen for each material?", args: {metric: limiting oxygen}}
+  scenario_coverage:
+    - {q: "What is the normal oxygen in the craft?", args: {scenario: iss}}
+    - {q: "Tests near the Moon base atmosphere?", args: {scenario: moon_base}}
+    - {q: "What data do we have for the ISS?", args: {scenario: iss}}
+    - {q: "Anything for a spacesuit at 100 % oxygen?", args: {scenario: spacesuit}}
+  get_findings:
+    - {q: "How does spread rate change with oxygen?", args: {x: oxygen, y: spread rate}}
+    - {q: "Does fire spread faster in space?", args: {x: oxygen, y: spread rate}}
+    - {q: "Is it true fire spreads faster in space?", args: {x: oxygen, y: spread rate}}
+    - {q: "Does pressure change the extinction diameter?", args: {x: pressure, y: extinction diameter}}
+  rank_agents:
+    - {q: "Which suppressant works best?", args: {}}
+    - {q: "CO2 or helium for liquid fuels?", args: {fuel_class: liquid}}
+  rank_investigations:
+    - {q: "Which experiments matter most for the Moon base?", args: {scenario: moon_base}}
+    - {q: "Which investigations are most relevant to suppression on the ISS?", args: {pillar: suppression, scenario: iss}}
+    - {q: "Rank the investigations for detection", args: {pillar: detection}}
+    - {q: "Which experiments matter most for prevention?", args: {pillar: prevention}}
+    - {q: "Which experiments matter most for a spacesuit?", args: {scenario: spacesuit}}
+  oxygen_effect:
+    - {q: "What oxygen level makes the spacecraft dangerous?", args: {scenario: iss}}
+    - {q: "Is more oxygen dangerous?", args: {}}
+    - {q: "How much oxygen makes a fire worse?", args: {}}
+  gaps:
+    - {q: "What don't we know for Mars?", args: {scenario: Mars}}
+    - {q: "What is missing for the spacesuit?", args: {scenario: spacesuit}}
+    - {q: "What happens to a candle on the Moon?", args: {scenario: partial gravity}}
+    - {q: "Can a fire burn the same way on Mars or the Moon?", args: {scenario: partial gravity}}
+    - {q: "Where are the biggest gaps?", args: {}}
+  search_text:
+    - {q: "Why are space smoke particles bigger?", args: {query: smoke particles bigger low gravity}}
+    - {q: "What do the reports say about cool flames?", args: {query: cool flame}}
+  show_view:
+    - {q: "Show me the flame spread view", args: {view: flame_spread}}
+    - {q: "Open materials for the Moon base", args: {view: materials, scenario: moon_base}}
+    - {q: "Show the gaps", args: {view: gaps}}

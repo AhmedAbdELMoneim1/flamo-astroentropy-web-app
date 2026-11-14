@@ -1,0 +1,102 @@
+# Round 9-10 router goldens: the question, the tool Gemini should pick, and the parameters it should (or should not) fill.
+# The offline test checks that every tool exists and the prompt names it; the live voice test checks Gemini's real choice.
+- question: What did BRE study?
+  tool: get_investigation
+- question: What did the SAME experiment measure?
+  tool: get_investigation
+- question: What is FLEX?
+  tool: get_investigation
+- question: What is Saffire-III?
+  tool: get_investigation
+- question: What did Saffire-II burn?
+  tool: get_investigation
+- question: What atmosphere do spacesuits use?
+  tool: scenario_coverage
+- question: What atmosphere will the Moon base use?
+  tool: scenario_coverage
+- question: Is there partial gravity data?
+  tool: gaps
+- question: Which experiments burned liquid droplets?
+  tool: rank_investigations
+- question: What oxygen level makes the spacecraft dangerous?
+  tool: oxygen_effect
+- question: When does fire become dangerous on the space station for my crew?
+  tool: oxygen_effect
+- question: What is the oxygen limit for fire safety in spacecraft?
+  tool: oxygen_effect
+- question: At what oxygen concentration can flames burn steadily?
+  tool: oxygen_effect
+- question: Why do flames go out in microgravity?
+  tool: ask_sources
+  args: {}
+- question: What did SPICE find about smoke points?
+  tool: ask_sources
+  args:
+    psi: SPICE
+- question: Can flames spread at 17 percent oxygen?
+  tool: ask_sources
+  args:
+    o2_pct: 17
+- question: How did soot change between normal gravity and microgravity for methane
+    flames?
+  tool: ask_sources
+  args:
+    fuel: methane
+- question: What did the BRE thesis say about steady flames?
+  tool: ask_sources
+  args:
+    psi: BRE
+- question: Find the passage about cool flames
+  tool: search_text
+  args: {}
+- question: What oxygen level allows steady flames in the BRE tests?
+  tool: ask_sources
+  args:
+    psi: BRE
+- question: What is the normal oxygen in the craft?
+  tool: scenario_coverage
+  args:
+    scenario: iss
+- question: Can I use water on a fire on the ISS?
+  tool: ask_sources
+  args: {}
+- question: What happens to flames in the suit?
+  tool: scenario_coverage
+  args:
+    scenario: spacesuit
+- question: Which material is the most dangerous to have in a spacecraft?
+  tool: rank_materials
+  args: {}
+- question: What should I do if a fire happens inside the suit?
+  tool: ask_sources
+  args: {}
+- question: Why are flames round in space?
+  tool: ask_sources
+  args: {}
+- question: How do smoke detectors work differently in microgravity?
+  tool: ask_sources
+  args: {}
+- question: Is it safe to keep 34 percent oxygen in the Moon base?
+  tool: oxygen_effect
+  args:
+    scenario: moon_base
+- question: And what about a base on Mars?
+  tool: gaps
+  args:
+    scenario: Mars
+- question: There's smoke coming from the avionics rack
+  tool: declare_fire_emergency
+  args: {}
+- question: I smell burning plastic in the cabin
+  tool: declare_fire_emergency
+  args: {}
+- question: There is no fire, I was only asking.
+  tool: clear_fire_emergency
+  args: {}
+- question: Tell me a joke about astronauts
+  tool: none
+  args: {}
+- question: ما هو الأكسجين الطبيعي في المركبة؟
+  tool: scenario_coverage
+  args:
+    scenario: iss

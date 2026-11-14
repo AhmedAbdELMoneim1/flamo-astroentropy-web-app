@@ -1,0 +1,390 @@
+[
+ {
+  "id": "R01",
+  "question": "Can flames spread in microgravity at 17 percent oxygen?",
+  "params": {
+   "o2_pct": 17
+  },
+  "keys": [
+   "xo2 = 17%"
+  ],
+  "expect_pages": []
+ },
+ {
+  "id": "R02",
+  "question": "How long did flames burn at 21 percent oxygen on the ISS before going out?",
+  "params": {
+   "o2_pct": 21,
+   "psi": "BRE"
+  },
+  "keys": [
+   "21%",
+   "40 s"
+  ],
+  "expect_pages": []
+ },
+ {
+  "id": "R03",
+  "question": "At what oxygen fraction are cool flames not observed?",
+  "params": {
+   "psi": "CFI-G"
+  },
+  "keys": [
+   "below about 0.4"
+  ],
+  "expect_pages": []
+ },
+ {
+  "id": "R04",
+  "question": "Why are smoke particles bigger in space?",
+  "params": {
+   "pillar": "detection"
+  },
+  "keys": [
+   "50% large",
+   "low-gravity"
+  ],
+  "expect_pages": []
+ },
+ {
+  "id": "R05",
+  "question": "Do smoke particles settle out in microgravity?",
+  "params": {},
+  "keys": [
+   "gravitational settling"
+  ],
+  "expect_pages": []
+ },
+ {
+  "id": "R06",
+  "question": "Which experiment burned SIBAL fabric in space?",
+  "params": {
+   "material": "SIBAL"
+  },
+  "keys": [
+   "sibal",
+   "narrower"
+  ],
+  "expect_pages": []
+ },
+ {
+  "id": "R07",
+  "question": "What limiting oxygen index did methanol droplets have in air and helium?",
+  "params": {
+   "fuel": "methanol"
+  },
+  "keys": [
+   "loi",
+   "0.14",
+   "helium"
+  ],
+  "expect_pages": []
+ },
+ {
+  "id": "R08",
+  "question": "Does helium dilution change cool flame extinction?",
+  "params": {},
+  "keys": [
+   "helium dilution",
+   "extinction"
+  ],
+  "expect_pages": []
+ },
+ {
+  "id": "R09",
+  "question": "How did soot change between normal gravity and microgravity for methane flames?",
+  "params": {
+   "fuel": "CH4"
+  },
+  "keys": [
+   "soot volume fraction",
+   "1-g to 0-g"
+  ],
+  "expect_pages": []
+ },
+ {
+  "id": "R10",
+  "question": "What tests were run at 8.2 psi and 34 percent oxygen?",
+  "params": {
+   "o2_pct": 34
+  },
+  "keys": [
+   "34%",
+   "8.2 psia"
+  ],
+  "expect_pages": []
+ },
+ {
+  "id": "R11",
+  "question": "What is the 85 percent oxygen bottle for?",
+  "params": {},
+  "keys": [
+   "85%",
+   "oxygen bottle"
+  ],
+  "expect_pages": []
+ },
+ {
+  "id": "R12",
+  "question": "How tall were BRE flames compared with the real fuels?",
+  "params": {
+   "psi": "BRE"
+  },
+  "keys": [
+   "flame heights",
+   "10% higher"
+  ],
+  "expect_pages": []
+ },
+ {
+  "id": "R13",
+  "question": "What quenching flow velocity did BASS-II find for SIBAL fabric?",
+  "params": {
+   "psi": "BASS-II"
+  },
+  "keys": [
+   "quenching flow velocities"
+  ],
+  "expect_pages": []
+ },
+ {
+  "id": "R14",
+  "question": "Does flow velocity change the flame spread rate in BASS?",
+  "params": {
+   "psi": "BASS"
+  },
+  "keys": [
+   "spread rate increases",
+   "flow velocity"
+  ],
+  "expect_pages": []
+ },
+ {
+  "id": "R15",
+  "question": "How does particle size depend on duct flow for smoke detection?",
+  "params": {
+   "psi": "SAME-R"
+  },
+  "keys": [
+   "particle size",
+   "duct velocity"
+  ],
+  "expect_pages": []
+ },
+ {
+  "id": "R16",
+  "question": "What happens to a smoke plume without buoyancy?",
+  "params": {
+   "psi": "SAME"
+  },
+  "keys": [
+   "spatially symmetric"
+  ],
+  "expect_pages": []
+ },
+ {
+  "id": "R17",
+  "question": "What did CFI-G find about the hot flames that spawned cool flames?",
+  "params": {
+   "psi": "CFI-G"
+  },
+  "keys": [
+   "2.6 times"
+  ],
+  "expect_pages": []
+ },
+ {
+  "id": "R18",
+  "question": "Are ground tests of flammability limits consistent with flight results?",
+  "params": {},
+  "keys": [
+   "xo2 = 21%",
+   "normal gravity"
+  ],
+  "expect_pages": []
+ },
+ {
+  "id": "R19",
+  "question": "What oxygen level allows steady flames in the BRE tests?",
+  "params": {
+   "psi": "BRE"
+  },
+  "keys": [
+   "26%",
+   "steady flames"
+  ],
+  "expect_pages": [
+   [
+    "fa457b0458af",
+    31
+   ],
+   [
+    "fa457b0458af",
+    140
+   ]
+  ]
+ },
+ {
+  "id": "R20",
+  "question": "How large were the samples in the Saffire experiments?",
+  "params": {
+   "psi": "Saffire-I"
+  },
+  "keys": [
+   "largest sample sizes"
+  ],
+  "expect_pages": [
+   [
+    "10.1016/j.actaastro.2014.11.025",
+    1
+   ]
+  ]
+ },
+ {
+  "id": "R21",
+  "question": "Why did NASA start the Saffire fire experiments?",
+  "params": {
+   "psi": "Saffire-I"
+  },
+  "keys": [
+   "reduce the uncertainty"
+  ],
+  "expect_pages": [
+   [
+    "10.1016/j.actaastro.2014.11.025",
+    1
+   ]
+  ]
+ },
+ {
+  "id": "R22",
+  "question": "What did the smoke particle size experiment on the spacecraft find?",
+  "params": {
+   "psi": "SAME"
+  },
+  "keys": [
+   "smoke particle size measurement"
+  ],
+  "expect_pages": [
+   [
+    "10.2514/6.2008-806",
+    1
+   ]
+  ]
+ },
+ {
+  "id": "R23",
+  "question": "How were laminar smoke points measured aboard the space station?",
+  "params": {
+   "psi": "SPICE"
+  },
+  "keys": [
+   "laminar smoke points were measured"
+  ],
+  "expect_pages": [
+   [
+    "10.2514/6.2010-1105",
+    1
+   ]
+  ]
+ },
+ {
+  "id": "R24",
+  "question": "How did CFI-G image cool flames after the hot flame quenched?",
+  "params": {
+   "psi": "CFI-G"
+  },
+  "keys": [
+   "intensified images"
+  ],
+  "expect_pages": [
+   [
+    "5fe67fa75841",
+    1
+   ]
+  ]
+ },
+ {
+  "id": "R25",
+  "question": "Which atmospheres did BRE use at 10.2 psia and 8.2 psia?",
+  "params": {
+   "psi": "BRE",
+   "o2_pct": 34
+  },
+  "keys": [
+   "10.2 psia",
+   "8.2 psia"
+  ],
+  "expect_pages": [
+   [
+    "24062beec756",
+    25
+   ]
+  ]
+ },
+ {
+  "id": "R26",
+  "question": "Why do droplet flames extinguish from radiative cooling in long microgravity tests?",
+  "params": {
+   "psi": "BRE"
+  },
+  "keys": [
+   "radiative cooling"
+  ],
+  "expect_pages": [
+   [
+    "24062beec756",
+    18
+   ]
+  ]
+ },
+ {
+  "id": "R27",
+  "question": "What did the Saffire II thick PMMA slab tests study?",
+  "params": {
+   "psi": "Saffire-II"
+  },
+  "keys": [
+   "10 mm thick pmma"
+  ],
+  "expect_pages": [
+   [
+    "10.1016/j.combustflame.2018.10.016",
+    2
+   ]
+  ]
+ },
+ {
+  "id": "R28",
+  "question": "What materials did the smoke experiments burn?",
+  "params": {
+   "pillar": "detection"
+  },
+  "keys": [
+   "kapton",
+   "teflon"
+  ],
+  "expect_pages": []
+ },
+ {
+  "id": "R29",
+  "question": "Which liquid fuels were burned as droplets?",
+  "params": {},
+  "keys": [
+   "heptane",
+   "methanol"
+  ],
+  "expect_pages": []
+ },
+ {
+  "id": "R30",
+  "question": "What do steady BRE flames look like?",
+  "params": {
+   "psi": "BRE"
+  },
+  "keys": [
+   "thin blue"
+  ],
+  "expect_pages": []
+ }
+]

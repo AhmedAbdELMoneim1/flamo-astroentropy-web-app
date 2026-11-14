@@ -1,0 +1,9 @@
+# Pinned by hand (checked on PyPI 2026-11-08). After the pilot build, `docker run --rm <image> pip freeze > requirements.lock`
+# is committed and the Dockerfile installs from it, so every later build gets the same transitive versions.
+docling==2.149.0
+docling-core==2.106.0
+docling-ibm-models==4.0.4
+rapidocr==3.10.0
+pypdfium2==5.15.1
+pillow==13.0.0
+httpx==0.28.1

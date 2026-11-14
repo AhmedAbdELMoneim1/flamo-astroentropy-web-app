@@ -1,0 +1,11 @@
+.venv
+node_modules
+frontend/node_modules
+frontend/dist
+rag_cache
+logs
+.env*
+data
+backup
+reports
+.git

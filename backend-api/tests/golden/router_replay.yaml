@@ -1,0 +1,259 @@
+round13:
+- q: What does the data say at 21 percent oxygen and 14.7 psi?
+  ok:
+  - tool
+  find: Near 21 percent
+- q: what's flammability in silicon in space base environment
+  ok:
+  - tool
+  find: silicone
+- q: compare between them
+  ok:
+  - tool
+  - both
+  - clarify
+- q: i want to know the flammability in Base for burning a silicon matirial
+  ok:
+  - tool
+  find: silicone
+- q: what's your data cover :)
+  ok:
+  - tool
+  find: covers
+- q: ok what's matirials u cover?
+  ok:
+  - tool
+  find: material labels
+- q: what's u cover in prevention
+  ok:
+  - tool
+  - both
+  find: Prevention
+- q: mmm.. want to ask about fabrics
+  ok:
+  - tool
+  - both
+  find: fabric
+- q: ok what should this cover
+  ok:
+  - tool
+  - both
+  - rag
+  - clarify
+- q: 'yes'
+  ok:
+  - tool
+  - both
+- q: ok i want to scope in psi 99
+  ok:
+  - tool
+  find: SAFFIRE-II
+- q: what's the pressure into this experment
+  ok:
+  - tool
+  find: Pressure in Saffire-II
+- q: ok variables this psi cover
+  ok:
+  - tool
+  find: SAFFIRE-II
+- q: there are a paper related to it ?
+  ok:
+  - rag
+  - both
+  - tool                 # Round 15: with an investigation in context this is list_papers
+- q: what's these samples
+  ok:
+  - rag
+  - both
+  - tool
+- q: 'yes'
+  ok:
+  - tool
+  - both
+- q: i want to know what's dangerous state here
+  ok:
+  - tool
+  - both
+  - rag
+- q: let us go to Base env
+  ok:
+  - action
+- q: mmm.... in prevention go to there
+  ok:
+  - action
+- q: ok go to space craft
+  ok:
+  - action
+- q: ok i want to now materials covered here
+  ok:
+  - tool
+  find: material labels
+- q: ok i want to know materials covered there
+  ok:
+  - tool
+  find: material labels
+- q: what's flat samples u cover here
+  ok:
+  - tool
+  - both
+  - rag
+  - clarify
+- q: 'yes'
+  ok:
+  - tool
+  - both
+- q: wait let us back to prevention material
+  ok:
+  - action
+- q: i see that in this chart that the o2 covered in 22% ?
+  ok:
+  - tool
+  find: Ambient oxygen
+- q: what's maximum o2 the data cover ?
+  ok:
+  - tool
+  find: 12 to 40 percent
+- q: ok can u back to last graph
+  ok:
+  - action
+- q: ok yes i mean here i see max o2 covered is near to 22% right ?
+  ok:
+  - tool
+  find: Ambient oxygen
+- q: ok this mean no test cover o2 > 25% ?
+  ok:
+  - tool
+  find: above 25 percent
+- q: ok .. go to prevention materials and tell me if fabric is there
+  ok:
+  - action
+  - tool
+- q: is fabric material there ?
+  ok:
+  - tool
+  find: fabric
+- q: ok what's tests covered with fabric material
+  ok:
+  - tool
+  find: fabric
+- q: go back
+  ok:
+  - action
+- q: go to prevention and materials
+  ok:
+  - action
+- q: what's material tests ?
+  ok:
+  - tool
+  find: material labels
+- q: nice that's very good i want to see the tests under teflon see
+  ok:
+  - tool
+  find: Teflon
+- q: 'yes'
+  ok:
+  - tool
+  - both
+- q: lol go back
+  ok:
+  - action
+- q: i want to know prevention of fabric material
+  ok:
+  - tool
+  - both
+  - clarify
+- q: compare between them
+  ok:
+  - tool
+  - both
+  - clarify
+- q: ok in saffire 2
+  ok:
+  - tool
+  - both
+- q: no i want to know if fabric with thickness low will be fastest in flammablity or with big thickness ?
+  ok:
+  - rag
+  - both
+  - clarify
+  - tool
+- q: thickness parmeter u don't have ?
+  ok:
+  - tool
+  find: hickness
+round10:
+- q: How were laminar smoke points measured aboard the space station?
+  ok:
+  - rag
+  - both
+  - tool
+- q: What is BRE?
+  ok:
+  - tool
+  find: BRE
+- q: What oxygen level allows steady flames in the BRE tests?
+  ok:
+  - rag
+  - both
+  find: '26'
+- q: What happens to flames in the spacesuit atmosphere?
+  ok:
+  - tool
+  - both
+  - rag
+- q: Why are flames round in space?
+  ok:
+  - rag
+  - both
+- q: What should I do if I smell burning plastic in the cabin?
+  ok:
+  - action
+  - clarify
+  find: mission fire procedure
+- q: Which material is the most dangerous to have in a spacecraft?
+  ok:
+  - tool
+  - both
+  find: nothing is ranked
+- q: How do smoke detectors work differently in microgravity?
+  ok:
+  - rag
+  - both
+  - tool
+- q: Is it safe to keep 34 percent oxygen in the Moon base?
+  ok:
+  - tool
+  - both
+- q: And what about a base on Mars?
+  ok:
+  - tool
+  find: Mars
+- q: Tell me a joke about astronauts
+  ok:
+  - tool
+  find: fire safety
+- q: Can I use water on a fire on the ISS?
+  ok:
+  - rag
+  - both
+  - tool
+- q: What should I do if a fire happens inside the suit?
+  ok:
+  - tool
+  - both
+  find: fire procedure
+- q: what's the normal oxygen in the craft
+  ok:
+  - tool
+  find: ISS
+pairs:
+- general: what's the flammability of fabric?
+  specific: BASS-II SIBAL flame spread vs flow
+- general: what materials are covered?
+  specific: which materials did Saffire-II burn?
+- general: how dangerous is high oxygen?
+  specific: What oxygen level allows steady flames in the BRE tests?
+- general: tell me about smoke
+  specific: SAME particle size
+- general: thin vs thick fabric
+  specific: BASS-II PMMA thickness

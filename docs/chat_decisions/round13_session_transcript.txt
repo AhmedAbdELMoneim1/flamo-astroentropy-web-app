@@ -1,0 +1,91 @@
+What does the data say at 21 percent oxygen and 14.7 psi?
+The details are on the screen. Please continue following the mission fire procedure.
+what's flammability in silicon in space base environment
+Which do you mean: SAME, which is PSI-102, or Saffire-II, which is PSI-99?
+compare between them
+SAME has eight table tests, while Saffire-II has nine. They use different hardware, with SAME using the MSG and far-field box, and Saffire-II using the Cygnus large duct. Both investigations burned silicone. The details are on the screen. Do you want the details of one of them?
+i want to know the flammability in Base for burning a silicon matirial
+That isn't covered in the PSI data or papers yet. It's an open question; answering it would need new experiments or papers on it. I can tell you about Flammability and Fire Behavior instead.
+what's your data cover :)
+My data covers Prevention, Flammability and Fire Behavior, Detection, and Suppression. I have information for the International Space Station, the Moon Base, and the spacesuit.
+ok what's matirials u cover?
+That isn't covered in the PSI data or papers yet. It's an open question; answering it would need new experiments or papers on it. I can tell you about Prevention instead.
+what's u cover in prevention
+Prevention explores what can catch fire. Flight tests burned fabrics and plastics such as SIBAL, Nomex, and PMMA in BASS, BASS-II, and the Saffire experiments. Forty-two different materials appear in the tests near the ISS cabin atmosphere. For example, ask me: Which experiments matter most for prevention?
+mmm.. want to ask about fabrics
+The BASS and BASS-II experiments studied flame growth, spread, and extinction on a SIBAL fabric, which is a composite cotton and fiberglass blend of 75 percent cotton and 25 percent fiberglass. The sources are on the screen. Do you want the data behind it?
+ok what should this cover
+The BASS-II results for SIBAL fabric show that flame spread rates are smaller for narrower samples, lower flow velocities, and lower oxygen percentages. The sources are on the screen. Do you want the data behind it?
+yes
+The data holds five test points with both oxygen and flame spread rate from three PSIs. No paper finding relates these two quantities; only test points are available. The details are on the screen. Do you want the investigations behind these findings?
+ok i want to scope in psi 99
+The
+The Spacecraft Fire Experiment-II, or SAFFIRE-II, which is PSI-99, is a flight investigation. According to the project registry, it addresses prevention through material comparison and fire behavior. The data holds nine table tests. The sources are on the screen. Do you want to compare it with another investigation?
+what's the pressure into this experment
+That isn't covered in the PSI data or papers yet. It's an open question; answering it would need new experiments or papers on it. I can tell you about Fire Behavior instead.
+ok variables this psi cover
+The Spacecraft Fire Experiment-II, or SAFFIRE-II, which is PSI-99, is a flight investigation. It addresses prevention through material comparison and fire behavior, and the data holds nine table tests. The sources are on the screen. Do you want to compare it with another investigation?
+there are a paper related to it ?
+Papers examine data and experiments obtained from Saffire-II, including tests where nine samples of different materials were burned sequentially in the same flow duct. The sources are on the screen. Do you want the data behind it?
+what's these samples
+The Saffire-II experiment burned nine samples of different materials, measuring five centimeters wide by twenty-nine centimeters long, sequentially in the same flow duct. This included two smaller samples of the same cotton-fiberglass fabric as Saffire-1 and Saffire-3, a flat PMMA slab, grooved sample eight, and flat sample nine. The sources are on the screen. Do you want the data behind it?
+yes
+The data holds eighteen test points with both oxygen and flame spread rate from one PSI. No paper finding relates these two quantities; only test points are available. The details are on the screen. Do you want the investigations behind these findings?
+i want to know what's dangerous state here
+In microgravity, flame spread occurs at seventeen percent oxygen, whereas it cannot in normal gravity at eighteen percent and below. Generally, oxygen levels of twenty-six percent and above can allow steady flames. The PSI data does not set a single safe or dangerous oxygen level; these are the conditions where the tests still burned. The sources are on the screen. Do you want to see the oxygen against pressure chart?
+let us go to Base env
+For the Moon base habitat, fifty-one tests in two PSIs are within the requirement, and all of them state nitrogen or air. Coverage is Medium. BRE tested these atmospheres; ask me what it found.
+mmm.... in prevention go to there
+No material tests near the Moon base habitat atmosphere in the PSI data. Ask me anything about Prevention.
+ok go to space craft
+For the ISS cabin, two hundred twenty-one tests in eight PSIs are within the specified range, and all of them state nitrogen or air. Coverage is High. Pick a topic, or ask me something.
+ok i want to now materials covered here
+The experiments burned flat samples, polymethylmethacrylate spheres, porous wax slabs, and wax candles. The sources are on the screen. Do you want the data behind it?
+ok i want to know materials covered there
+That isn't covered in the PSI data or papers yet. It's an open question; answering it would need new experiments or papers on it. I can tell you about Prevention instead.
+Do you want the data behind it?
+I can provide the investigations behind these findings if you'd like, or I can tell you more about Prevention.
+what's flat samples u cover here
+The flat sample materials include acrylic films and sheets of different thicknesses, and a cotton-fiberglass fabric blend Solid Inflammability Boundary at Low-Speeds fuel. The sources are on the screen. Do you want the data behind it?
+yes
+No paper finding relates these two quantities. The details are on the screen. Do you want the investigations behind these findings?
+wait let us back to prevention material
+Forty-two different materials appear in the tests near the ISS cabin atmosphere. Ask me anything about Prevention.
+i see that in this chart that the o2 covered in 22% ?
+I set the oxygen to 22 percent; the panel shows the nearest tests. For the ISS cabin, 221 tests in eight PSIs are within three points of oxygen and ten percent of pressure, and all state nitrogen or air. Coverage is High. A second tier adds 74 nearby tests. The sources are on the screen. Do you want the most relevant investigations for it?
+what's maximum o2 the data cover ?
+That isn't covered in the PSI data or papers yet. It's an open question; answering it would need new experiments or papers on it. I can tell you about Prevention instead.
+ok can u back to last graph
+This is how a fire behaves once it starts. The flight tests measured how fast flames spread, and how that changed with oxygen and air flow. Ask me, for example, whether fire spreads faster in space. For example, ask me: Does fire spread faster in space?
+ok yes i mean here i see max o2 covered is near to 22% right ?
+The data includes tests near twenty-one percent oxygen for the ISS cabin, and some tests in a looser band extend slightly higher. The details are on the screen.
+ok this mean no test cover o2 > 25% ?
+I set the oxygen to 25 percent; the panel shows the nearest tests. That isn't covered in the PSI data or papers yet. It's an open question; answering it would need new experiments or papers on it. I can tell you about Prevention instead.
+ok .. go to prevention materials and tell me if fabric is there
+Ninety-four different materials appear in the tests in the data. Ask me anything about Prevention.
+is fabric material there ?
+Fabric materials are present in the tests. Ask me anything about Prevention.
+ok what's tests covered with fabric material
+That isn't covered in the PSI data or papers yet. It's an open question; answering it would need new experiments or papers on it. I can tell you about Prevention
+go back
+ Twenty-seven of the 2274 tests in the data have a measured flame spread rate. Ask me anything about Flammability and Fire Behavior.
+go to prevention and materials
+Ninety-four different materials appear in the tests in the data. Ask me anything about Prevention.
+what's material tests ?
+The tests included six samples each of five materials: Teflon, Kapton, silicone rubber, cellulose, and dibutyl-phthalate on a porous wick. The sources are on the screen. Do you want the data behind it?
+nice that's very good i want to see the tests under teflon see
+The results for Teflon, Kapton, and lampwick plotted versus duct velocity show a strong trend of increased particle size at low flow rates. The sources are on the screen. Do you want the data behind it?
+yes
+I could not match the field 'duct velocity'. The details are on the screen.
+lol go back
+Ninety-four different materials appear in the tests in the data. Ask me anything about Prevention.
+i want to know prevention of fabric material
+Which do you mean: Saffire-I, which is PSI-98, Saffire-III, which is PSI-100, or ACME CFI-G, which is PSI-159?
+compare between them
+Saffire-I has two table tests, and Saffire-III also has two. Both run on the same hardware family, which is the Cygnus large duct, and both burned SIBAL. Saffire-III has no pressure values in the data. The sources are on the screen. Do you want the details of one of them?
+ok in saffire 2
+The Spacecraft Fire Experiment-II, or SAFFIRE-II, which is PSI-99, is a flight investigation. According to the project registry, it addresses prevention through material comparison and fire behavior. The data holds nine table tests. The sources are on the screen. Do you want to compare it with another investigation?
+no i want to know if fabric with thickness low will be fastest in flammablity or with big thickness ?
+I could not match the field 'thickness'. That isn't covered in the PSI data or papers yet. It's an open question; answering it would need new experiments or papers on it. I can tell you about Flammability and Fire Behavior instead.
+thickness parmeter u don't have ?
+That isn't covered in the PSI data or papers yet. It's an open question; answering it would need new experiments or papers on it. I can tell you about Flammability and Fire Behavior instead.

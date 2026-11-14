@@ -1,0 +1,30 @@
+services:
+  rag-master:
+    build: .
+    image: rag-master:1
+    env_file: .env
+    environment:
+      RAG_CACHE: /app/rag_cache
+      MANIFEST: ${MANIFEST:-/app/rag_cache/manifest.jsonl}
+    ports:
+      - "${BIND_HOST:-0.0.0.0}:${MASTER_PORT:-8765}:8765"
+    volumes:
+      - ../../rag_cache:/app/rag_cache                      # read-write: queue.db, results
+      - ${DOCS_ROOT}:${DOCS_ROOT}:ro                        # the NASA documents (paths in the manifest are absolute)
+      - ${PSI_ROOT}/local_data/papers:${PSI_ROOT}/local_data/papers:ro
+    user: "${UID:-1000}:${GID:-1000}"           # results are written as the host user, not root
+    restart: unless-stopped
+
+  # optional: the master laptop parses too (default off: its disk is nearly full and the docling models need several GB).
+  # docker compose --profile local up -d      with LOCAL_WORKER_PROCS / LOCAL_THREADS_PER_PROC set in .env
+  local-worker:
+    profiles: ["local"]
+    image: rag-docling-worker:3
+    environment:
+      MASTER_URL: http://rag-master:8765
+      WORKER_TOKEN: ${WORKER_TOKEN}
+      WORKER_ID: master-local
+      PROCS: ${LOCAL_WORKER_PROCS:-1}
+      THREADS_PER_PROC: ${LOCAL_THREADS_PER_PROC:-2}
+      IMAGE_TAG: rag-docling-worker:3
+    depends_on: [rag-master]

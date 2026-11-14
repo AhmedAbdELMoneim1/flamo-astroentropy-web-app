@@ -1,0 +1,36 @@
+/* Emergency banner: top centre, large type, replays its entrance on every new alert */
+.emg {
+    position: fixed; top: 14px; left: 50%; transform: translateX(-50%); z-index: 60;
+    width: min(760px, calc(100vw - 32px)); max-height: calc(100vh - 28px); overflow-y: auto;
+    padding: 16px 20px 14px; border-radius: 18px;
+    background: linear-gradient(180deg, rgba(86, 8, 14, .96), rgba(40, 4, 8, .96));
+    border: 1px solid rgba(255, 96, 96, .75); border-top: 4px solid #ff4b4b;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, .5), 0 18px 48px rgba(0, 0, 0, .6), 0 0 36px rgba(255, 60, 60, .35);
+    color: #fff; font-family: 'Share Tech Mono', monospace;
+    animation: emg-in .45s cubic-bezier(.2, .9, .3, 1) both, emg-glow 1.8s ease-in-out .45s 3;
+}
+.emg-head { display: flex; align-items: center; gap: 14px; }
+.emg-ico { flex: none; width: 40px; height: 40px; fill: #ff5a5a; filter: drop-shadow(0 0 8px rgba(255, 70, 70, .8)); }
+.emg-t { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.emg-k { font: 700 15px Orbitron, sans-serif; letter-spacing: .22em; color: #ff8a8a; }
+.emg-t b { font: 700 25px/1.2 Orbitron, sans-serif; overflow-wrap: anywhere; }
+.emg-t b::first-letter { text-transform: uppercase; }
+.emg-x {
+    flex: none; width: 38px; height: 38px; border-radius: 50%; cursor: pointer; font-size: 26px; line-height: 1;
+    color: #ffb0b0; background: rgba(255, 255, 255, .06); border: 1px solid rgba(255, 130, 130, .45);
+}
+.emg-x:hover { background: rgba(255, 90, 90, .3); color: #fff; }
+.emg-steps { counter-reset: s; list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 8px; }
+.emg-steps li {
+    counter-increment: s; display: flex; gap: 12px; align-items: flex-start;
+    padding: 9px 12px; border-radius: 12px; background: rgba(255, 255, 255, .07); font-size: 20px; line-height: 1.35;
+}
+.emg-steps li::before {
+    content: counter(s); flex: none; width: 30px; height: 30px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center;
+    font: 700 16px Orbitron, sans-serif; color: #2a0306; background: #ff6a6a;
+}
+.emg-foot { margin: 12px 2px 0; font-size: 17px; color: #ffc4c4; opacity: .95; }
+@keyframes emg-in { from { opacity: 0; transform: translate(-50%, -28px) scale(.96); } to { opacity: 1; transform: translate(-50%, 0) scale(1); } }
+@keyframes emg-glow { 50% { box-shadow: 0 0 0 1px rgba(0, 0, 0, .5), 0 18px 48px rgba(0, 0, 0, .6), 0 0 64px rgba(255, 70, 70, .75); } }
+@media (prefers-reduced-motion: reduce) { .emg { animation: none; } }
+@media (max-width: 600px) { .emg-t b { font-size: 20px; } .emg-steps li { font-size: 17px; } }

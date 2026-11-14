@@ -1,0 +1,72 @@
+# Round 14 §14.7 step 1: the understand step. q, the primary intent (null = none), entities that must be found (a subset), optional context psi / scenario on screen.
+# Sources: Round 10 sets, the Round 13 session transcript (user turns), the general -> specific pairs, and the logged questions.
+- {q: "What is BRE?", primary: investigation, e: {psi: [PSI-20]}}
+- {q: "What did PSI-69 test?", primary: investigation, e: {psi: [PSI-69]}}
+- {q: "Compare BASS and BASS-II", primary: compare, e: {psi: [PSI-26, PSI-25]}}
+- {q: "compare between them", primary: compare, e: {}}
+- {q: "What oxygen level allows steady flames in the BRE tests?", primary: danger, e: {psi: [PSI-20], fields: [oxygen]}}
+- {q: "What happens to flames in the spacesuit atmosphere?", primary: why, e: {scenario: spacesuit}}
+- {q: "Why are flames round in space?", primary: why, e: {}}
+- {q: "How were laminar smoke points measured aboard the space station?", primary: why, e: {scenario: iss}}
+- {q: "What oxygen level makes the spacecraft dangerous?", primary: danger, e: {scenario: iss, fields: [oxygen]}}
+- {q: "How dangerous is high oxygen?", primary: danger, e: {fields: [oxygen]}}
+- {q: "Is 34 percent oxygen dangerous on the Moon base?", primary: danger, e: {scenario: moon_base, o2: 34}}
+- {q: "What does the data say at 21 percent oxygen and 14.7 psi?", primary: null, e: {o2: 21, pressure_psi: 14.7}}
+- {q: "what's flammability in silicon in space base environment", primary: null, e: {material: silicone, scenario: moon_base}}
+- {q: "i want to know the flammability in Base for burning a silicon matirial", primary: null, e: {material: silicone, scenario: moon_base}}
+- {q: "what's your data cover :)", primary: coverage, e: {}}
+- {q: "ok what's matirials u cover?", primary: materials, e: {}}
+- {q: "what's u cover in prevention", primary: coverage, e: {pillar: prevention}}
+- {q: "mmm.. want to ask about fabrics", primary: null, e: {family: fabric}}
+- {q: "yes", primary: null, confirm: true, e: {}}
+- {q: "ok i want to scope in psi 99", primary: investigation, e: {psi: [PSI-99]}}
+- {q: "what's the pressure into this experment", primary: investigation, ctx_psi: PSI-99, e: {psi: [PSI-99], fields: [pressure]}}
+- {q: "ok variables this psi cover", primary: investigation, ctx_psi: PSI-99, e: {psi: [PSI-99]}}
+- {q: "there are a paper related to it ?", primary: papers, ctx_psi: PSI-99, e: {psi: [PSI-99]}}
+- {q: "what's these samples", primary: null, ctx_psi: PSI-99, e: {psi: [PSI-99]}}
+- {q: "i want to know what's dangerous state here", primary: danger, ctx_psi: PSI-99, e: {psi: [PSI-99]}}
+- {q: "let us go to Base env", primary: navigate, e: {scenario: moon_base}}
+- {q: "mmm.... in prevention go to there", primary: navigate, e: {pillar: prevention}}
+- {q: "ok go to space craft", primary: navigate, e: {scenario: iss}}
+- {q: "ok i want to now materials covered here", primary: materials, screen_scenario: iss, e: {}}
+- {q: "ok i want to know materials covered there", primary: materials, e: {}}
+- {q: "wait let us back to prevention material", primary: navigate, e: {pillar: prevention}}
+- {q: "i see that in this chart that the o2 covered in 22% ?", primary: ranges, e: {fields: [oxygen]}}
+- {q: "what's maximum o2 the data cover ?", primary: ranges, e: {fields: [oxygen]}}
+- {q: "ok can u back to last graph", primary: navigate, go_back: true, e: {}}
+- {q: "ok yes i mean here i see max o2 covered is near to 22% right ?", primary: ranges, e: {fields: [oxygen]}}
+- {q: "ok this mean no test cover o2 > 25% ?", primary: ranges, e: {fields: [oxygen], above: 25}}
+- {q: "ok .. go to prevention materials and tell me if fabric is there", primary: navigate, e: {family: fabric, pillar: prevention}}
+- {q: "is fabric material there ?", primary: find_tests, e: {family: fabric}}
+- {q: "ok what's tests covered with fabric material", primary: find_tests, e: {family: fabric}}
+- {q: "go back", primary: navigate, go_back: true, e: {}}
+- {q: "go to prevention and materials", primary: navigate, e: {pillar: prevention}}
+- {q: "what's material tests ?", primary: materials, e: {}}
+- {q: "nice that's very good i want to see the tests under teflon see", primary: find_tests, e: {material: Teflon}}
+- {q: "lol go back", primary: navigate, go_back: true, e: {}}
+- {q: "i want to know prevention of fabric material", primary: null, e: {family: fabric, pillar: prevention}}
+- {q: "ok in saffire 2", primary: null, e: {psi: [PSI-99]}}
+- {q: "no i want to know if fabric with thickness low will be fastest in flammablity or with big thickness ?", primary: effect, e: {family: fabric, fields: [thickness]}}
+- {q: "thickness parmeter u don't have ?", primary: ranges, e: {fields: [thickness]}}
+# ---- the general -> specific pairs (Round 14 §14.4)
+- {q: "what's the flammability of fabric?", primary: null, e: {family: fabric}}
+- {q: "BASS-II SIBAL flame spread vs flow", primary: effect, e: {psi: [PSI-25], material: SIBAL, fields: [spread rate, flow speed]}}
+- {q: "what materials are covered?", primary: materials, e: {}}
+- {q: "which materials did Saffire-II burn?", primary: materials, e: {psi: [PSI-99]}}
+- {q: "how dangerous is high oxygen?", primary: danger, e: {fields: [oxygen]}}
+- {q: "BRE oxygen 26 %", primary: null, e: {psi: [PSI-20], o2: 26}}
+- {q: "tell me about smoke", primary: null, e: {topic: detection}}
+- {q: "SAME particle size", primary: null, e: {psi: [PSI-102], fields: [particle size]}}
+- {q: "thin vs thick fabric", primary: effect, e: {family: fabric, fields: [thickness]}}
+- {q: "BASS-II PMMA thickness", primary: effect, e: {psi: [PSI-25], material: PMMA, fields: [thickness]}}
+# ---- more: catalogue, ranges, find_tests, flow synonyms
+- {q: "which fabrics did Saffire-III burn?", primary: materials, e: {psi: [PSI-100], family: fabric}}
+- {q: "what is the highest pressure tested?", primary: ranges, e: {fields: [pressure]}}
+- {q: "is there any test above 40 percent oxygen?", primary: ranges, e: {fields: [oxygen], above: 40}}
+- {q: "what flow speeds did the duct tests use? duct velocity range", primary: ranges, e: {fields: [flow speed]}}
+- {q: "show the tests with PMMA", primary: find_tests, e: {material: PMMA}}
+- {q: "silicone tests near the Moon base", primary: find_tests, e: {material: silicone, scenario: moon_base}}
+- {q: "does airflow affect how fast fabric burns?", primary: effect, e: {family: fabric, fields: [flow speed]}}
+- {q: "rank the investigations for the spacesuit", primary: rank, e: {scenario: spacesuit}}
+- {q: "what should I do if there is a fire", primary: procedure, ctx_psi: PSI-99, e: {}}
+- {q: "go to the detection view", primary: navigate, e: {pillar: detection}}

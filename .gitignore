@@ -1,0 +1,58 @@
+# Python-generated files
+__pycache__/
+__pycache__
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+.DS_Store
+.idea
+KMS
+.vscode
+.pytest_cache
+.ruff_cache
+node_modules/
+frontend/dist/
+frontend/node_modules
+
+# Virtual environments
+.venv
+
+# ENV 
+.env
+.env.local
+
+
+
+
+# Gemini CLI
+.gemini/history/
+.gemini/tmp/
+.gemini/google_accounts.json
+.gemini/installation_id
+.gemini/oauth_creds.json
+
+
+# Stage 7: data and logs are never committed
+*.db
+logs/
+
+rag_cache/
+*.desc.jsonl
+.env.docker
+frontend/.env.production
+frontend/.firebaserc
+voice-agent-livekit/secrets.env
+data/docs/
+data/postgres/*.dump
+backend-api/logs/
+backend-api/rag_cache/
+
+# env files (examples too) are never committed
+.env*
+*.env
+!.gitignore
+rag_cache/
+data/postgres/*.dump
+data/postgres/backups/

@@ -1,0 +1,54 @@
+[
+ {
+  "question": "What did BRE study?",
+  "tool": "get_investigation"
+ },
+ {
+  "question": "What did the SAME experiment measure?",
+  "tool": "get_investigation"
+ },
+ {
+  "question": "What is FLEX?",
+  "tool": "get_investigation"
+ },
+ {
+  "question": "What is Saffire-III?",
+  "tool": "get_investigation"
+ },
+ {
+  "question": "What did Saffire-II burn?",
+  "tool": "get_investigation"
+ },
+ {
+  "question": "What atmosphere do spacesuits use?",
+  "tool": "scenario_coverage"
+ },
+ {
+  "question": "What atmosphere will the Moon base use?",
+  "tool": "scenario_coverage"
+ },
+ {
+  "question": "Is there partial gravity data?",
+  "tool": "gaps"
+ },
+ {
+  "question": "Which experiments burned liquid droplets?",
+  "tool": "rank_investigations"
+ },
+ {
+  "question": "What oxygen level makes the spacecraft dangerous?",
+  "tool": "oxygen_effect"
+ },
+ {
+  "question": "When does fire become dangerous on the space station for my crew?",
+  "tool": "oxygen_effect"
+ },
+ {
+  "question": "What is the oxygen limit for fire safety in spacecraft?",
+  "tool": "oxygen_effect"
+ },
+ {
+  "question": "At what oxygen concentration can flames burn steadily?",
+  "tool": "oxygen_effect"
+ }
+]

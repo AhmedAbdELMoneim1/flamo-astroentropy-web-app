@@ -1,0 +1,1915 @@
+/* Flame in Freefall dashboard styles (all rules scoped under .fd)
+   Muted cyberpunk, slightly brighter, readable panels, fonts x1.3.
+   Tuning knobs (top of .fd):
+     --mix    accent vividness (higher = brighter)
+     --bgA    panel background opacity (higher = easier to read over the 3D scene) */
+@property --accent {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #7fb8ff
+}
+
+.fd {
+    --accent: #7fb8ff;
+    --mix: 72%;
+    --bgA: .86;
+    --ac: color-mix(in srgb, var(--accent) var(--mix), #0d1a28);
+    --ink: #d3e2f0;
+    --dim: #98b2c6;
+    --warn: #e0687f;
+    --ok: #50cc9c;
+    --panel: rgba(3, 10, 18, .84);
+    position: relative;
+    box-sizing: border-box;
+    height: 100vh;
+    padding: 16px;
+    display: grid;
+    grid-template-columns: var(--w1, 22%) minmax(0, 1fr) var(--w3, 22%);
+    grid-template-rows: 66px minmax(0, 1fr);
+    gap: 16px;
+    overflow: hidden;
+    color: var(--ink);
+    font: 400 18px/1.5 'Share Tech Mono', monospace;
+    transition: none;
+    background: linear-gradient(rgba(127, 184, 255, .028) 1px, transparent 1px) 0 0/32px 32px, linear-gradient(90deg, rgba(127, 184, 255, .028) 1px, transparent 1px) 0 0/32px 32px
+}
+
+.ui-hidden .fd>*:not(.top) {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity .3s ease, visibility 0s linear .3s;
+}
+
+.fd * {
+    box-sizing: border-box
+}
+
+.fd:after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 50;
+    background: repeating-linear-gradient(transparent 0 2px, rgba(0, 0, 0, .07) 2px 3px)
+}
+
+.fd button {
+    font-family: inherit;
+    color: inherit
+}
+
+.fd .pn {
+    position: relative;
+    backdrop-filter: blur(10px);
+    min-height: 0;
+    display: flex;
+    flex-direction: column
+}
+
+.fd .suit.on,
+.fd .habitat.on {
+    background: color-mix(in srgb, var(--ac) 22%, transparent);
+}
+
+.fd .suit.on svg path,
+.fd .habitat.on svg path {
+    stroke: var(--ac);
+}
+
+.fd .pn>.in {
+    position: relative;
+    flex: 1;
+    min-height: 0;
+    padding: 38px 22px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px
+}
+
+/* HUD frames */
+.fd .fr {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    pointer-events: none;
+    filter: drop-shadow(0 0 2px color-mix(in srgb, var(--ac) 70%, transparent));
+    animation: fl 3s infinite
+}
+
+@keyframes fl {
+    50% {
+        opacity: .99
+    }
+}
+
+.fd .fr .a {
+    fill: var(--ac);
+    fill-opacity: .85
+}
+
+.fd .fr .l {
+    fill: none;
+    stroke: var(--ac);
+    stroke-opacity: .9
+}
+
+/* panel background: first .bgf path is the solid fill -> control its opacity here */
+.fd .fr path.bgf:nth-of-type(1) {
+    fill: rgb(3, 10, 18);
+    fill-opacity: var(--bgA)
+}
+
+/* inline gradient stops written by JS use var(--accent): force the muted one */
+.fd .fr stop {
+    stop-color: var(--ac) !important
+}
+
+/* title tab is drawn by JS at a fixed 24px height, so this text stays small */
+.fd .tt {
+    position: absolute;
+    top: 2px;
+    height: 20px;
+    line-height: 20px;
+    font: 700 16px Orbitron, sans-serif;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: #07121c;
+    white-space: nowrap
+}
+
+.fd .tt {
+    left: 26px
+}
+
+.fd .top {
+    grid-column: 1 / -1;
+    width: 100%;
+    max-width: none;
+}
+
+.fd .top>.in {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+    padding-inline: 18px;
+}
+
+.fd .top .tabs {
+    flex: 1 1 auto;
+    min-width: 0;
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.fd .top .tab,
+.fd .top .etab {
+    flex: 0 0 auto;
+    white-space: nowrap;
+}
+
+.fd .top .hu {
+    margin-left: 0;
+    flex: 0 0 auto;
+}
+
+.fd .top .hu-btn {
+    font: inherit;
+    font-size: 18px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--ac);
+    background: var(--panel);
+    border: 1px solid color-mix(in srgb, var(--ac) 70%, transparent);
+    padding: 7px 16px;
+    cursor: pointer;
+}
+
+.fd .top .hu-btn:hover {
+    background: color-mix(in srgb, var(--ac) 16%, var(--panel));
+}
+
+.fd .top .envs {
+    display: flex;
+    gap: 2px;
+    margin-left: 10px;
+}
+
+.fd .top .etab {
+    font: inherit;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--ink);
+    background: transparent;
+    border: 1px solid transparent;
+    padding: 7px 13px;
+    cursor: pointer;
+}
+
+.fd .top .etab[aria-selected="true"] {
+    color: var(--ink);
+    border-color: var(--ac);
+    background: color-mix(in srgb, var(--ac) 14%, transparent);
+}
+
+.fd .top .atm {
+    margin: 0 14px 0 10px;
+    font-size: .85em;
+    letter-spacing: .1em;
+    color: var(--ac);
+    white-space: nowrap;
+}
+
+.fd .top>.in {
+    flex-direction: row;
+    align-items: center;
+    padding: 6px 26px;
+    gap: 14px
+}
+
+.fd .col {
+    display: flex;
+    flex-direction: column;
+    min-height: 0
+}
+
+.fd .col>.pn {
+    flex: 1 1 auto;
+    height: auto !important;
+    min-height: 0;
+}
+
+.fd .col>.pn>.in {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+/* inside it: avatar and status keep their size, the chat takes the rest */
+.fd .col .vbox,
+.fd .col .vs,
+.fd .col .trn {
+    flex: 0 0 auto;
+}
+
+.fd .col .chat {
+    flex: 1 1 auto;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.fd .col .msgs {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+}
+
+.fd .col .cf {
+    flex: 0 0 auto;
+}
+
+.fd .col>.pn:first-child {
+    flex: 0 0 var(--vh, 38%)
+}
+
+.fd .col>.pn:last-child {
+    flex: 1
+}
+
+.fd.pwr .o {
+    stroke-dasharray: 1;
+    animation: dr .4s ease-out var(--d) backwards
+}
+
+.fd.pwr .bgf {
+    animation: fi .4s ease var(--d) backwards
+}
+
+.fd.pwr .pn>.in {
+    animation: fi .4s ease calc(var(--d) + .3s) backwards
+}
+
+@keyframes dr {
+    from {
+        stroke-dashoffset: 1
+    }
+
+    to {
+        stroke-dashoffset: 0
+    }
+}
+
+@keyframes fi {
+    from {
+        opacity: 0
+    }
+}
+
+.fd .fx {
+    opacity: 1;
+    transition: opacity .7s
+}
+
+.fd .fx.out {
+    opacity: 0;
+    transition-duration: .3s
+}
+
+.fd .home {
+    width: 44px;
+    height: 44px;
+    flex: none;
+    background: var(--panel);
+    border: 1px solid color-mix(in srgb, var(--ac) 70%, transparent);
+    cursor: pointer;
+    padding: 8px
+}
+
+.fd svg.i,
+.fd .home svg,
+.fd .tab svg {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 7;
+    stroke-linecap: round;
+    stroke-linejoin: round
+}
+
+.fd .home svg {
+    width: 100%;
+    height: 100%
+}
+
+.fd .tabs {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding: 4px 6px
+}
+
+.fd .tab {
+    transform: skewX(-18deg);
+    border: 1px solid color-mix(in srgb, var(--ac) 60%, transparent);
+    background: var(--panel);
+    color: var(--dim);
+    padding: 7px 16px;
+    cursor: pointer;
+    font: 700 17px Orbitron, sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    white-space: nowrap;
+    transition: filter .2s, background .2s
+}
+
+.fd .tab>* {
+    transform: skewX(18deg)
+}
+
+.fd .tab svg {
+    width: 21px;
+    height: 21px
+}
+
+.fd .tab:hover {
+    color: var(--ink);
+    filter: brightness(1.15)
+}
+
+/* active tab: tinted fill + bright outline */
+.fd .tab[aria-selected=true] {
+    background: color-mix(in srgb, var(--ac) 32%, var(--panel));
+    color: var(--ink);
+    border-color: var(--ac);
+    box-shadow: 0 0 5px color-mix(in srgb, var(--ac) 60%, transparent)
+}
+
+.fd .tab.gl {
+    animation: gl .12s steps(2)
+}
+
+@keyframes gl {
+    0% {
+        clip-path: inset(0 0 55% 0);
+        transform: skewX(-18deg) translateX(-5px)
+    }
+
+    50% {
+        clip-path: inset(45% 0 0 0);
+        transform: skewX(-18deg) translateX(5px)
+    }
+}
+
+.fd :focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 2px
+}
+
+.fd .vbox {
+    position: relative;
+    overflow: hidden;
+    border: 2px solid color-mix(in srgb, var(--ac) 75%, transparent);
+    border-radius: 14px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    padding: 0 14px;
+    box-shadow: none
+}
+
+.fd .eh {
+    position: absolute;
+    inset: 0;
+    overflow: hidden
+}
+
+.fd .eh canvas {
+    display: block
+}
+
+/* lens inside the voice box */
+.fd .lv {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    pointer-events: none
+}
+
+.fd .lcw {
+    position: absolute;
+    inset: 0;
+    min-height: 0;
+    background: transparent;
+    pointer-events: none
+}
+
+.fd .lcw .cs {
+    background: transparent
+}
+
+.fd .lcw .lc {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    font-size: 16px
+}
+
+.fd .lcw .cs .pn .i {
+    padding: 2px 8px
+}
+
+.fd .ll {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    opacity: 0;
+    pointer-events: none;
+    font-size: 17px;
+    letter-spacing: .14em;
+    background: rgba(7, 6, 13, .85);
+    padding: 2px 8px;
+    color: var(--ac)
+}
+
+.fd .vb {
+    width: 13px;
+    height: 20%;
+    border-radius: 7px;
+    background: var(--ac);
+    box-shadow: none;
+    transition: background .2s
+}
+
+.fd.sp .vb {
+    background: var(--ink)
+}
+
+.fd .vs {
+    display: flex;
+    align-items: center;
+    gap: 9px
+}
+
+.fd .led {
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: var(--ac);
+    box-shadow: 0 0 3px var(--ac)
+}
+
+.fd.sp .led {
+    background: var(--ink)
+}
+
+.fd .st {
+    font: 500 18px Orbitron, sans-serif;
+    letter-spacing: .14em;
+    flex: 1
+}
+
+.fd .mic {
+    width: 44px;
+    height: 44px;
+    border: 1px solid color-mix(in srgb, var(--ac) 70%, transparent);
+    background: var(--panel);
+    cursor: pointer;
+    padding: 8px
+}
+
+.fd .mic svg {
+    width: 100%;
+    height: 100%
+}
+
+.fd .mic[aria-pressed=true] {
+    background: color-mix(in srgb, var(--warn) 30%, var(--panel));
+    color: var(--ink);
+    border-color: var(--warn)
+}
+
+.fd .trn {
+    min-height: 50px;
+    color: var(--dim)
+}
+
+.fd .trn span {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    transition: opacity .2s
+}
+
+.fd .cv {
+    position: relative;
+    flex: 1;
+    min-height: 90px
+}
+
+.fd .cv canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%
+}
+
+.fd .dm {
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 16px;
+    color: var(--dim);
+    letter-spacing: .1em
+}
+
+.fd .ro {
+    display: flex;
+    justify-content: space-between;
+    gap: 6px;
+    font-size: 16px;
+    color: var(--dim)
+}
+
+.fd .ro b {
+    display: block;
+    color: var(--ink);
+    font-weight: 400;
+    font-size: 17px
+}
+
+.fd .pbk .fxw {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex: 1;
+    min-height: 0;
+    overflow-x: hidden;
+    overflow-y: auto
+}
+
+.fd .sls {
+    padding: 0 8px
+}
+
+.fd .rl {
+    font: 500 17px Orbitron, sans-serif;
+    color: var(--ac);
+    letter-spacing: .08em
+}
+
+.fd .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px
+}
+
+.fd .chip,
+.fd .btn {
+    background: var(--panel);
+    border: 1px solid color-mix(in srgb, var(--ac) 65%, transparent);
+    padding: 6px 12px;
+    cursor: pointer;
+    font-size: 17px;
+    text-transform: uppercase;
+    letter-spacing: .08em
+}
+
+.fd .chip.on {
+    background: color-mix(in srgb, var(--ac) 32%, var(--panel));
+    border-color: var(--ac);
+    color: var(--ink)
+}
+
+.fd .btn:hover,
+.fd .chip:hover {
+    filter: brightness(1.2)
+}
+
+.fd .sl .h {
+    display: flex;
+    justify-content: space-between;
+    gap: 6px
+}
+
+.fd .trk {
+    position: relative;
+    height: 30px;
+    display: flex;
+    gap: 3px;
+    align-items: center;
+    cursor: pointer;
+    touch-action: none
+}
+
+.fd .trk i {
+    flex: 1;
+    height: 12px;
+    border: 1px solid var(--ac);
+    transform: skewX(-25deg);
+    opacity: .4
+}
+
+.fd .trk i.f {
+    background: var(--ac);
+    opacity: 1;
+    box-shadow: none
+}
+
+.fd .hd {
+    position: absolute;
+    top: 1px;
+    width: 12px;
+    height: 28px;
+    margin-left: -6px;
+    background: var(--ac);
+    border: 2px solid var(--ink);
+    box-shadow: none;
+    pointer-events: none
+}
+
+.fd .dis {
+    opacity: .4;
+    pointer-events: none
+}
+
+.fd .dsh>.in,
+.fd .dsh .in {
+    flex-direction: row;
+    gap: 14px
+}
+
+.fd .rail {
+    flex: none;
+    width: 42px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 11px;
+    border-right: 1px solid color-mix(in srgb, var(--ac) 35%, transparent);
+    padding-right: 10px
+}
+
+.fd .rail svg {
+    width: 32px;
+    height: 32px;
+    fill: none;
+    stroke: var(--ac);
+    stroke-width: 7;
+    stroke-linecap: round;
+    stroke-linejoin: round
+}
+
+.fd .mk {
+    width: 14px;
+    height: 14px;
+    padding: 0;
+    background: transparent;
+    border: 1px solid var(--ac);
+    cursor: pointer;
+    transform: rotate(45deg)
+}
+
+.fd .mk:hover {
+    background: var(--ac)
+}
+
+.fd .dsc {
+    flex: 1;
+    min-width: 0;
+    overflow: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--ac) transparent;
+    padding-right: 8px
+}
+
+.fd .dsc::-webkit-scrollbar {
+    width: 6px
+}
+
+.fd .dsc::-webkit-scrollbar-thumb {
+    background: var(--ac)
+}
+
+.fd .tag {
+    position: absolute;
+    right: 34px;
+    top: 2px;
+    font-size: 17px;
+    color: var(--dim);
+    letter-spacing: .1em
+}
+
+.fd .sec {
+    margin: 0 0 18px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid color-mix(in srgb, var(--ac) 22%, transparent)
+}
+
+.fd .sh {
+    margin: 0 0 9px;
+    font: 500 17px Orbitron, sans-serif;
+    letter-spacing: .14em;
+    color: var(--ac);
+    text-transform: uppercase
+}
+
+.fd h2 {
+    margin: 0;
+    display: inline;
+    font: 700 29px Orbitron, sans-serif;
+    letter-spacing: .08em
+}
+
+.fd h4 {
+    margin: 9px 0 3px;
+    font: 500 17px Orbitron, sans-serif;
+    color: var(--dim);
+    letter-spacing: .1em
+}
+
+/* badges: dark tinted, coloured text */
+.fd .bd {
+    margin-left: 12px;
+    padding: 3px 11px;
+    font: 700 17px Orbitron, sans-serif;
+    color: var(--ac);
+    background: color-mix(in srgb, var(--ac) 16%, var(--panel));
+    border: 1px solid color-mix(in srgb, var(--ac) 70%, transparent)
+}
+
+.fd .bd.ok {
+    background: color-mix(in srgb, var(--ok) 16%, var(--panel));
+    border-color: var(--ok);
+    color: var(--ok)
+}
+
+.fd .bd.hot {
+    background: color-mix(in srgb, var(--warn) 16%, var(--panel));
+    border-color: var(--warn);
+    color: var(--warn)
+}
+
+.fd .big {
+    font: 700 52px Orbitron, sans-serif;
+    color: var(--ink);
+    margin: 7px 0;
+    text-shadow: 0 0 4px color-mix(in srgb, var(--ac) 50%, transparent)
+}
+
+.fd .big small {
+    font-size: 20px;
+    color: var(--dim)
+}
+
+.fd p {
+    margin: 0
+}
+
+.fd .chart {
+    width: 100%;
+    max-height: 270px;
+    display: block
+}
+
+.fd .chart text {
+    fill: var(--dim);
+    font: 18px 'Share Tech Mono', monospace
+}
+
+.fd .chart .gr {
+    stroke: rgba(159, 192, 216, .14)
+}
+
+.fd .chart .cl {
+    fill: none;
+    stroke: var(--ac);
+    stroke-width: 2.5;
+    filter: drop-shadow(0 0 2px var(--ac))
+}
+
+/* Round 10 §10.3 item 5: the markers keep their own colours (an old rule forced every point to the accent colour) */
+
+.fd .chart .mkl {
+    stroke: var(--ink);
+    stroke-dasharray: 3 3
+}
+
+.fd .chart .mkc {
+    fill: var(--ink) !important;
+    stroke: var(--ac);
+    stroke-width: 3
+}
+
+.fd .rk {
+    display: grid;
+    grid-template-columns: minmax(110px, 30%) 1fr 90px;
+    gap: 11px;
+    align-items: center;
+    padding: 4px 7px;
+    border-left: 3px solid transparent
+}
+
+.fd .rk.on {
+    border-color: var(--ac);
+    background: color-mix(in srgb, var(--ac) 14%, transparent)
+}
+
+.fd .bt {
+    height: 9px;
+    background: rgba(159, 192, 216, .14)
+}
+
+.fd .bt i {
+    display: block;
+    height: 100%;
+    background: var(--ac);
+    box-shadow: none
+}
+
+.fd .tw {
+    overflow-x: auto
+}
+
+.fd table {
+    width: 100%;
+    border-collapse: collapse
+}
+
+.fd th {
+    text-align: left;
+    font-weight: 400;
+    padding: 0
+}
+
+.fd th button {
+    background: none;
+    border: 0;
+    cursor: pointer;
+    color: var(--dim);
+    font-size: 17px;
+    padding: 7px;
+    text-align: left;
+    width: 100%
+}
+
+.fd td {
+    padding: 7px
+}
+
+.fd tbody tr {
+    cursor: pointer;
+    border-bottom: 1px solid rgba(159, 192, 216, .12)
+}
+
+.fd tbody tr:hover {
+    background: color-mix(in srgb, var(--ac) 8%, transparent)
+}
+
+.fd tr[aria-selected=true] {
+    background: color-mix(in srgb, var(--ac) 16%, transparent);
+    box-shadow: inset 4px 0 var(--ac)
+}
+
+.fd .lbl {
+    font: 500 17px Orbitron, sans-serif;
+    letter-spacing: .14em;
+    color: var(--ac);
+    margin-bottom: 13px
+}
+
+.fd .sk {
+    height: 54px;
+    margin-bottom: 12px;
+    background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--ac) 25%, transparent), transparent) rgba(127, 184, 255, .05);
+    background-size: 200% 100%;
+    animation: sh 1.3s linear infinite
+}
+
+@keyframes sh {
+    from {
+        background-position: 200% 0
+    }
+
+    to {
+        background-position: -200% 0
+    }
+}
+
+.fd .err {
+    border: 1px solid var(--warn);
+    background: color-mix(in srgb, var(--warn) 10%, var(--panel));
+    color: var(--warn);
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start
+}
+
+.fd .err .btn {
+    border-color: var(--warn)
+}
+
+/* answer panel + KPI boxes are built in JS with inline var(--accent) borders */
+.fd [style*="var(--accent)"] {
+    border-color: color-mix(in srgb, var(--ac) 70%, transparent) !important
+}
+
+.fd aside[role="dialog"] {
+    background: rgb(3, 10, 18) !important
+}
+
+.fd .deco {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 4
+}
+
+.fd .deco * {
+    stroke: var(--ac);
+    fill: none;
+    stroke-opacity: .3
+}
+
+.fd .stx {
+    position: absolute;
+    pointer-events: none;
+    font-size: 17px;
+    color: var(--dim);
+    opacity: .7;
+    letter-spacing: .14em
+}
+
+.fd .rz {
+    position: absolute;
+    z-index: 6;
+    padding: 0;
+    border: 1px solid rgba(255, 255, 255, .3);
+    border-radius: 3px;
+    background-color: var(--ac);
+    box-shadow: none;
+    opacity: .75;
+    touch-action: none;
+    transition: transform .15s, filter .15s, box-shadow .15s
+}
+
+.fd .rz:hover,
+.fd .rz:focus-visible {
+    opacity: 1;
+    filter: brightness(1.15);
+    box-shadow: 0 0 6px var(--ac)
+}
+
+.fd .rz:active {
+    filter: brightness(1.3)
+}
+
+.fd .rz.l,
+.fd .rz.r {
+    width: 11px;
+    height: 54px;
+    margin-top: -27px;
+    cursor: pointer;
+    background-image: repeating-linear-gradient(0deg, transparent 0 4px, rgba(4, 18, 28, .55) 4px 5px)
+}
+
+.fd .rz.t,
+.fd .rz.b {
+    width: 54px;
+    height: 11px;
+    margin-left: -27px;
+    cursor: pointer;
+    background-image: repeating-linear-gradient(90deg, transparent 0 4px, rgba(4, 18, 28, .55) 4px 5px)
+}
+
+.fd .rz.l {
+    left: -5.5px;
+    top: 30%
+}
+
+.fd .rz.r {
+    right: -5.5px;
+    top: 75%
+}
+
+.fd .rz.t {
+    top: -5.5px;
+    left: 62%
+}
+
+.fd .rz.b {
+    bottom: -5.5px;
+    left: 50%
+}
+
+.fd .rz.l:hover,
+.fd .rz.r:hover {
+    transform: scaleX(1.2)
+}
+
+.fd .rz.t:hover,
+.fd .rz.b:hover {
+    transform: scaleY(1.2)
+}
+
+.fd.rs .rz {
+    animation: none
+}
+
+@keyframes rzp {
+    50% {
+        box-shadow: 0 0 10px 1px var(--ac), 0 0 0 2px rgba(4, 18, 28, .85)
+    }
+}
+
+.fd.rs {
+    user-select: none
+}
+
+.fd .chat {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 9px
+}
+
+.fd .msgs {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    padding-right: 6px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--ac) transparent
+}
+
+.fd .msgs::-webkit-scrollbar {
+    width: 6px
+}
+
+.fd .msgs::-webkit-scrollbar-thumb {
+    background: var(--ac)
+}
+
+.fd .msg {
+    max-width: 90%;
+    padding: 6px 11px;
+    border: 1px solid color-mix(in srgb, var(--ac) 40%, transparent);
+    background: rgba(3, 10, 18, .78);
+    overflow-wrap: anywhere;
+    white-space: pre-wrap
+}
+
+.fd .msg.me {
+    align-self: flex-end;
+    border-color: color-mix(in srgb, var(--ac) 80%, transparent);
+    background: color-mix(in srgb, var(--ac) 18%, rgb(3, 10, 18))
+}
+
+.fd .msg.ai {
+    align-self: flex-start
+}
+
+.fd .cf {
+    display: flex;
+    gap: 7px;
+    flex: none
+}
+
+.fd .ci {
+    flex: 1;
+    min-width: 0;
+    background: var(--panel);
+    border: 1px solid color-mix(in srgb, var(--ac) 65%, transparent);
+    color: var(--ink);
+    font: inherit;
+    padding: 7px 11px
+}
+
+.fd .ci::placeholder {
+    color: var(--dim)
+}
+
+.fd .cf .btn {
+    flex: none
+}
+
+/* bigger text needs more room: hide the extras earlier */
+@media (max-width: 1400px) {
+    .fd .top .atm {
+        display: none;
+    }
+}
+
+@media (max-width: 1380px) {
+    .fd .top .tab span {
+        display: none;
+    }
+}
+
+@media(max-width:999px) {
+    .fd .rz {
+        display: none
+    }
+
+    .fd {
+        height: auto;
+        min-height: 100vh;
+        overflow: visible;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto
+    }
+
+    .fd .top {
+        max-width: 100%;
+        grid-column: 1
+    }
+
+    .fd .pn {
+        min-height: 340px
+    }
+
+    .fd .col>.pn {
+        flex: none !important
+    }
+
+    .fd .deco,
+    .fd .stx {
+        display: none
+    }
+
+    .fd .top {
+        min-height: 66px
+    }
+}
+
+@media(prefers-reduced-motion:reduce) {
+    .fd * {
+        animation: none !important
+    }
+
+    .fd .fx {
+        transition-duration: .3s !important
+    }
+}
+
+/* ===== TOP BAR: rounded, soft, grouped ===== */
+
+/* replace the sharp stepped frame with a soft rounded bar */
+.fd .top .fr {
+    display: none;
+}
+
+.fd .top {
+    background: rgba(3, 10, 18, var(--bgA));
+    border: 1px solid color-mix(in srgb, var(--ac) 35%, transparent);
+    border-radius: 22px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, .35);
+}
+
+.fd .top>.in {
+    gap: 14px;
+    padding: 6px 14px;
+}
+
+/* home button */
+.fd .home {
+    width: 46px;
+    height: 46px;
+    padding: 9px;
+    border-radius: 15px;
+    background: color-mix(in srgb, var(--ac) 10%, transparent);
+    border: 1px solid color-mix(in srgb, var(--ac) 45%, transparent);
+    color: var(--ink);
+    transition: background .2s, border-color .2s;
+}
+
+.fd .home:hover {
+    background: color-mix(in srgb, var(--ac) 22%, transparent);
+    border-color: var(--ac);
+}
+
+/* environment group: one soft pill with 3 icon buttons */
+.fd .envb {
+    display: inline-flex;
+    gap: 4px;
+    padding: 4px;
+    flex: none;
+    border-radius: 17px;
+    background: rgba(255, 255, 255, .03);
+    border: 1px solid color-mix(in srgb, var(--ac) 28%, transparent);
+}
+
+.fd .eb {
+    width: 42px;
+    height: 42px;
+    padding: 9px;
+    border: 0;
+    border-radius: 13px;
+    background: transparent;
+    color: var(--dim);
+    cursor: pointer;
+    transition: background .2s, color .2s, box-shadow .2s;
+}
+
+.fd .eb svg {
+    width: 100%;
+    height: 100%;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.fd .eb:hover {
+    background: color-mix(in srgb, var(--ac) 14%, transparent);
+    color: var(--ink);
+}
+
+.fd .eb.on {
+    background: color-mix(in srgb, var(--ac) 28%, transparent);
+    color: var(--ink);
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--ac) 70%, transparent);
+}
+
+.fd .eb.on svg path {
+    stroke: currentColor;
+}
+
+/* category tabs: no skew, rounded pills inside one soft container */
+.fd .top .tabs {
+    flex: 0 1 auto;
+    margin-inline: auto;
+    gap: 4px;
+    padding: 4px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, .03);
+    border: 1px solid color-mix(in srgb, var(--ac) 28%, transparent);
+}
+
+.fd .tab {
+    transform: none;
+    border: 1px solid transparent;
+    border-radius: 14px;
+    background: transparent;
+    padding: 8px 18px;
+    letter-spacing: .06em;
+}
+
+.fd .tab>* {
+    transform: none;
+}
+
+.fd .tab.gl {
+    animation: none;
+}
+
+.fd .tab:hover {
+    background: color-mix(in srgb, var(--ac) 14%, transparent);
+    filter: none;
+}
+
+.fd .tab[aria-selected=true] {
+    background: color-mix(in srgb, var(--ac) 28%, transparent);
+    border-color: color-mix(in srgb, var(--ac) 75%, transparent);
+    color: var(--ink);
+    box-shadow: 0 2px 10px color-mix(in srgb, var(--ac) 30%, transparent);
+}
+
+/* Hide UI */
+.fd .top .hu-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    border-radius: 15px;
+    padding: 9px 16px;
+    letter-spacing: .08em;
+    background: color-mix(in srgb, var(--ac) 10%, transparent);
+    border: 1px solid color-mix(in srgb, var(--ac) 45%, transparent);
+    color: var(--ink);
+    transition: background .2s, border-color .2s;
+}
+
+.fd .top .hu-btn:hover {
+    background: color-mix(in srgb, var(--ac) 22%, transparent);
+    border-color: var(--ac);
+}
+
+.fd .top .hu-btn svg {
+    flex: none;
+}
+
+/* ===== environment buttons = same look as category tabs ===== */
+.fd .envb {
+    display: flex;
+    flex: none;
+    gap: 4px;
+    padding: 4px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, .03);
+    border: 1px solid color-mix(in srgb, var(--ac) 28%, transparent);
+}
+
+.fd .eb {
+    width: auto;
+    height: auto;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 8px 18px;
+    border: 1px solid transparent;
+    border-radius: 14px;
+    background: transparent;
+    color: var(--dim);
+    font: 700 17px Orbitron, sans-serif;
+    letter-spacing: .06em;
+    white-space: nowrap;
+    cursor: pointer;
+    box-shadow: none;
+    transition: background .2s, color .2s, border-color .2s;
+}
+
+.fd .eb svg {
+    width: 21px;
+    height: 21px;
+    flex: none;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.fd .eb:hover {
+    background: color-mix(in srgb, var(--ac) 14%, transparent);
+    color: var(--ink);
+}
+
+.fd .eb.on {
+    background: color-mix(in srgb, var(--ac) 28%, transparent);
+    border-color: color-mix(in srgb, var(--ac) 75%, transparent);
+    color: var(--ink);
+    box-shadow: 0 2px 10px color-mix(in srgb, var(--ac) 30%, transparent);
+}
+
+/* narrow screens: icons only, same as the category tabs */
+@media (max-width: 1300px) {
+
+    .fd .top .eb span,
+    .fd .top .hu-btn.ab span {
+        display: none;
+    }
+
+    .fd .eb {
+        padding: 8px 12px;
+    }
+}
+/* ---- Stage 7: one layout, real data ---- */
+.fd .nt { opacity: .72; font-size: 16px; margin: 4px 0 0; display: block; }
+.fd .tier { opacity: .8; font-size: 15px; border: 1px solid var(--accent); padding: 0 4px; margin-left: 4px; cursor: help; }
+.fd .rk.nr { opacity: .72; }
+.fd .rk.nr b { font-weight: 400; }
+.fd .lbl.rkdv { margin: 10px 0 4px; letter-spacing: .08em; }
+.fd .card { border-left: 2px solid var(--accent); padding: 2px 0 2px 10px; margin: 8px 0; }
+.fd .card p { margin: 0 0 2px; }
+.fd .asks { display: flex; flex-wrap: wrap; gap: 8px; }
+.fd .grv { margin: 10px 0 0; font-size: 16px; opacity: .85; }
+.fd .bd.cov2 { margin-top: 4px; display: inline-block; }
+.fd .lgs { display: flex; flex-wrap: wrap; gap: 4px 12px; font-size: 15px; margin: 4px 0 8px; }
+.fd .lgs .lg { display: inline-flex; align-items: center; gap: 4px; }
+.fd .lgs .lg i { width: 9px; height: 9px; border-radius: 50%; display: inline-block; }
+.fd .rk { grid-template-columns: minmax(110px, 34%) 1fr minmax(90px, 34%); }
+.fd .rk.nr { grid-template-columns: minmax(110px, 34%) 1fr; }
+.fd .rk b { text-align: right; font-size: 16px; font-weight: 500; }
+
+/* ===== Stage 7 round 6.1: polish inside the existing theme (same colours, fonts and background) ===== */
+.fd .big { overflow-wrap: anywhere; line-height: 1.1; }
+.fd .big small { font-size: 18px; margin-left: 2px; letter-spacing: .04em; }
+.fd .kps { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
+.fd .kp { border: 1px solid color-mix(in srgb, var(--ac) 70%, transparent); background: color-mix(in srgb, var(--ac) 7%, transparent); padding: 8px 12px 9px; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.fd .kp .kl { font: 500 16px Orbitron, sans-serif; letter-spacing: .1em; color: var(--dim); text-transform: uppercase; overflow-wrap: anywhere; }
+.fd .kp .big { font-size: 34px; margin: 2px 0 0; }
+.fd .kp .big small { font-size: 16px; }
+.fd .kp .kb { margin: 0; opacity: .8; font-size: 17px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; overflow-wrap: anywhere; }
+
+/* rank/name and tier chip on the left, the bar with its label next to it */
+.fd .rk { min-width: 0; }
+.fd .rk .who { display: flex; align-items: baseline; flex-wrap: wrap; gap: 2px 8px; min-width: 0; }
+.fd .rk .rn { font: 700 17px Orbitron, sans-serif; font-style: normal; color: var(--ac); min-width: 1.2em; }
+.fd .rk .nm { overflow-wrap: anywhere; min-width: 0; }
+.fd .rk .val { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.fd .rk .val .bt { flex: 1 1 auto; min-width: 40px; }
+.fd .rk .vl { font-weight: 400; white-space: nowrap; font-size: 16px; color: var(--dim); }
+.fd .rk.rr, .fd .rk.bars { grid-template-columns: minmax(130px, 38%) 1fr; }
+.fd .rk.nr { grid-template-columns: minmax(130px, 38%) 1fr; }
+.fd .rk .bt i { transition: width .5s ease; }
+.fd .tier { border-radius: 0; white-space: nowrap; cursor: help; }
+
+/* slider value: the number, the unit small beside it */
+.fd .sl .vl b { font-weight: 700; }
+.fd .sl .vl small { font-size: .75em; margin-left: 3px; color: var(--dim); }
+
+/* the answer is one card: the question as its title, then numbers, chart, table */
+.fd .sec.cd { margin: 0; padding: 12px 16px; border-bottom: 0; border-left: 1px solid color-mix(in srgb, var(--ac) 40%, transparent); border-right: 1px solid color-mix(in srgb, var(--ac) 40%, transparent); background: color-mix(in srgb, var(--ac) 6%, transparent); }
+.fd .sec.cd1 { margin-top: 4px; border-top: 1px solid color-mix(in srgb, var(--ac) 40%, transparent); }
+.fd .sec.cdn { margin-bottom: 18px; border-bottom: 1px solid color-mix(in srgb, var(--ac) 40%, transparent); }
+.fd .sec.cd + .sec.cd { padding-top: 4px; }
+.fd .sp { margin: 6px 0 0; line-height: 1.45; overflow-wrap: anywhere; }
+.fd .gp { margin: 3px 0; padding-left: 14px; text-indent: -14px; }
+.fd .gp::before { content: '• '; }
+.fd .empty { margin: 4px 0 0; padding: 10px 14px; border: 1px dashed color-mix(in srgb, var(--ac) 55%, transparent); color: var(--dim); line-height: 1.45; }
+
+/* long text wraps, nothing overflows a tile or the panel */
+.fd .dsc p, .fd .dsc h2, .fd .dsc h3, .fd .dsc .card { overflow-wrap: anywhere; min-width: 0; }
+.fd .dsc td { overflow-wrap: break-word; word-break: normal; hyphens: none; min-width: 4.5em; }   /* words are never cut in the middle */
+.fd td { max-width: 320px; vertical-align: top; }
+.fd .card small { display: block; }
+@media (prefers-reduced-motion: no-preference) {
+    .fd .sec { animation: fi .4s ease backwards; }   /* the theme's own fade-in */
+}
+@media (max-width: 1300px) {
+    .fd .big { font-size: 42px; }
+    .fd .kp .big { font-size: 28px; }
+    .fd .kps { grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); }
+}
+.fd .rk.rr, .fd .rk.bars, .fd .rk.nr { grid-template-columns: minmax(110px, 38%) minmax(0, 1fr); }
+.fd .rk .val { flex-wrap: wrap; }
+.fd .rk .vl { white-space: normal; overflow-wrap: anywhere; min-width: 0; }
+
+/* ===== Stage 7 round 9 (6.3): sources in the answer card, source numbers on the spoken lines, the document viewer (same colours, fonts, background) ===== */
+.fd .sr { margin-left: 3px; font: 700 .68em Orbitron, sans-serif; color: var(--ac); vertical-align: super; letter-spacing: .04em; }
+.fd .sg { margin: 8px 0 0; }
+.fd .sg h4 { display: flex; align-items: center; gap: 8px; margin: 6px 0 4px; font-size: 17px; }
+.fd .sg h4 svg { width: 18px; height: 18px; flex: none; fill: none; stroke: var(--ac); stroke-width: 6; stroke-linejoin: round; }
+.fd .sg ol { list-style: none; margin: 0; padding: 0; }
+.fd .sg li { display: grid; grid-template-columns: 26px minmax(0, 1fr) auto; gap: 8px; align-items: start; padding: 5px 0; border-bottom: 1px solid rgba(159, 192, 216, .12); }
+.fd .sg .sn { font: 700 16px Orbitron, sans-serif; font-style: normal; color: var(--ac); text-align: center; border: 1px solid color-mix(in srgb, var(--ac) 60%, transparent); }
+.fd .sg .st { min-width: 0; overflow-wrap: anywhere; line-height: 1.35; }
+.fd .sg .st small { display: block; margin-top: 2px; }
+.fd .sg .st .q { font-style: italic; }
+.fd .sg .sa { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+.fd .sg .sa .chip, .fd .sg .sa a.chip { padding: 1px 9px; font-size: 17px; text-decoration: none; cursor: pointer; }
+.fd .dv { position: absolute; top: 0; right: 0; bottom: 0; width: min(560px, 46%); z-index: 30; display: flex; flex-direction: column; background: var(--panel); border-left: 2px solid var(--ac); box-shadow: -8px 0 24px rgba(0, 0, 0, .5); }
+.fd .dvh { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 8px 12px; border-bottom: 1px solid color-mix(in srgb, var(--ac) 40%, transparent); }
+.fd .dvt { overflow-wrap: anywhere; font: 500 16px Orbitron, sans-serif; letter-spacing: .06em; }
+.fd .dvf { flex: 1; min-height: 0; width: 100%; border: 0; background: #1b1b1b; }
+.fd a.chip, .fd a.chip:visited { color: var(--ink, #e6f1ff); background: var(--panel); }
+.fd a.chip:hover { background: color-mix(in srgb, var(--ac) 14%, transparent); }
+.fd .oq { margin: 4px 0 8px; padding: 10px 14px; border: 1px dashed color-mix(in srgb, var(--ac) 55%, transparent); color: var(--dim); line-height: 1.45; }
+
+/* numbered scenario markers on the scatter, with their key below */
+.fd .lg .bd { display: inline-block; min-width: 16px; margin-right: 5px; padding: 0 3px; border: 1px solid #fff; border-radius: 3px; background: #04101c; color: #fff; font-size: 16px; text-align: center; font-weight: 400 }
+
+/* Round 10 §10.4: badge on its own line and never split; fixed name column with an ellipsis; the rank label is never cut; wide chat bubbles */
+.fd .bds { margin: 2px 0 6px; }
+.fd .bd { white-space: nowrap; }
+.fd .rk .who { flex-wrap: nowrap; }
+.fd .rk .nm { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1 1 auto; }
+.fd .rk .tier { flex: none; }
+.fd .rk { grid-template-columns: minmax(130px, 36%) 1fr minmax(120px, 34%); }
+.fd .rk b { white-space: normal; overflow-wrap: break-word; text-align: left; }
+.fd .msg { max-width: 100%; width: fit-content; min-width: 40%; }
+
+/* Round 11: "Your conditions" panel (right) and the evidence sections (dashboard top) */
+.fd .ycsrc { margin: 0; min-height: 1em; opacity: .9; }
+.fd .ycpo { font-size: 16px; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 8px; }
+.fd .ycpo b { font: 700 18px Orbitron, sans-serif; }
+.fd .ycn { font-size: 16px; }
+.fd .ycn b, .fd .yn b { color: var(--ac); }
+.fd .ladder { width: 100%; height: auto; max-height: 300px; display: block; color: var(--dim); }
+.fd .ladder text { fill: currentColor; }
+.fd .ladder .lu text, .fd .ladder .lm text { fill: #fff; }
+.fd .ladder .lm { cursor: pointer; }
+.fd .yck { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; font-size: 16px; }
+.fd .yck li { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 6px; align-items: start; }
+.fd .yck .bd { display: inline-block; min-width: 18px; padding: 0 3px; text-align: center; border: 1px solid #fff; background: #04101c; color: #fff; font-size: 16px; }
+.fd .ycb { display: flex; flex-wrap: wrap; gap: 8px; }
+.fd .ycb .chip { font-size: 17px; padding: 5px 9px; text-transform: none; letter-spacing: .02em; }
+.fd .cmp { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; font-size: 17px; }
+.fd .trk u.tkm { position: absolute; bottom: -2px; width: 2px; height: 7px; background: #fff; opacity: .75; pointer-events: none; text-decoration: none; }
+.fd .yt { width: 100%; font-size: 17px; }
+.fd .yt td, .fd .yt th { padding: 4px 6px; text-align: left; vertical-align: top; }
+.fd .yt th { font-weight: 400; color: var(--dim); border-bottom: 1px solid rgba(159, 192, 216, .25); }
+.fd .yt td { border-bottom: 1px solid rgba(159, 192, 216, .12); min-width: 0; }
+.fd small.kk { opacity: .75; }
+.fd .pbk .bd { white-space: normal; max-width: 100%; }
+.fd .yck { font-size: 16px; gap: 3px; }
+.fd .pbk .fxw { gap: 8px; }
+
+/* Round 12: map and ladder side by side; the source label on its own wrapped line; legend under the spread chart */
+.fd .wy { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(150px, 1fr); gap: 14px; align-items: start; }
+.fd .wyl .sh { margin: 0 0 4px; }
+.fd .wyl .ladder { max-height: none; }
+.fd .ycsrc { display: block; white-space: normal; overflow-wrap: anywhere; margin: 0 0 6px; line-height: 1.3; }
+.fd .sls { clear: both; }
+@media (max-width: 1100px) { .fd .wy { grid-template-columns: 1fr; } }
+
+/* ===== DASHBOARD PANELS = same soft style as the navbar ===== */
+
+/* remove the stepped HUD frames and the connector decorations */
+.fd .fr,
+.fd .deco,
+.fd .stx {
+    display: none;
+}
+
+/* optional: drop the scanlines for a cleaner look */
+.fd:after {
+    display: none;
+}
+
+/* every panel: rounded dark card, same as .top */
+.fd .pn {
+    background: rgba(3, 10, 18, var(--bgA));
+    border: 1px solid color-mix(in srgb, var(--ac) 35%, transparent);
+    border-radius: 22px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, .35);
+}
+
+.fd .top.pn>.in {
+    padding: 6px 14px;
+}
+
+/* panel title: small label instead of the old tab */
+.fd .pn>.tt {
+    top: 14px;
+    left: 22px;
+    height: auto;
+    line-height: 1;
+    font-size: 17px;
+    color: var(--ac);
+    pointer-events: none;
+}
+
+.fd .tag {
+    top: 10px;
+    right: 18px;
+    padding: 3px 10px;
+    border-radius: 999px;
+    border: 1px solid color-mix(in srgb, var(--ac) 35%, transparent);
+    background: rgba(255, 255, 255, .03);
+    font-size: 17px;
+}
+
+/* ---------- voice panel ---------- */
+.fd .vbox {
+    border-radius: 18px;
+    border: 1px solid color-mix(in srgb, var(--ac) 35%, transparent);
+}
+
+.fd .mic {
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+    background: color-mix(in srgb, var(--ac) 10%, transparent);
+    border: 1px solid color-mix(in srgb, var(--ac) 45%, transparent);
+    color: var(--ink);
+    transition: background .2s, border-color .2s;
+}
+
+.fd .mic:hover {
+    background: color-mix(in srgb, var(--ac) 22%, transparent);
+    border-color: var(--ac);
+}
+
+.fd .mic[aria-pressed=true] {
+    background: color-mix(in srgb, var(--warn) 30%, transparent);
+    border-color: var(--warn);
+}
+
+.fd .msg {
+    border-radius: 16px;
+    background: rgba(255, 255, 255, .03);
+    border: 1px solid color-mix(in srgb, var(--ac) 28%, transparent);
+    padding: 8px 14px;
+}
+
+.fd .msg.me {
+    background: color-mix(in srgb, var(--ac) 22%, transparent);
+    border-color: color-mix(in srgb, var(--ac) 60%, transparent);
+    border-bottom-right-radius: 6px;
+}
+
+.fd .msg.ai {
+    border-bottom-left-radius: 6px;
+}
+
+.fd .ci {
+    border-radius: 14px;
+    background: rgba(255, 255, 255, .03);
+    border: 1px solid color-mix(in srgb, var(--ac) 35%, transparent);
+    padding: 9px 14px;
+}
+
+.fd .ci:focus {
+    outline: none;
+    border-color: var(--ac);
+}
+
+/* ---------- buttons and chips: same pills as the tabs ---------- */
+.fd .btn,
+.fd .chip {
+    border-radius: 14px;
+    background: color-mix(in srgb, var(--ac) 10%, transparent);
+    border: 1px solid color-mix(in srgb, var(--ac) 45%, transparent);
+    color: var(--ink);
+    padding: 8px 16px;
+    letter-spacing: .06em;
+    transition: background .2s, border-color .2s, box-shadow .2s;
+}
+
+.fd .btn:hover,
+.fd .chip:hover {
+    filter: none;
+    background: color-mix(in srgb, var(--ac) 22%, transparent);
+    border-color: var(--ac);
+}
+
+.fd .chip.on {
+    background: color-mix(in srgb, var(--ac) 28%, transparent);
+    border-color: color-mix(in srgb, var(--ac) 75%, transparent);
+    box-shadow: 0 2px 10px color-mix(in srgb, var(--ac) 30%, transparent);
+}
+
+.fd .vsw {
+    padding: 4px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, .03);
+    border: 1px solid color-mix(in srgb, var(--ac) 28%, transparent);
+    width: fit-content;
+}
+
+.fd .vsw .chip {
+    background: transparent;
+    border-color: transparent;
+}
+
+.fd .vsw .chip.on {
+    background: color-mix(in srgb, var(--ac) 28%, transparent);
+    border-color: color-mix(in srgb, var(--ac) 75%, transparent);
+}
+
+/* ---------- sliders: rounded segments ---------- */
+.fd .trk i {
+    transform: none;
+    border: 0;
+    border-radius: 4px;
+    opacity: 1;
+    background: color-mix(in srgb, var(--ac) 18%, transparent);
+}
+
+.fd .trk i.f {
+    background: var(--ac);
+}
+
+.fd .hd {
+    border-radius: 7px;
+}
+
+/* ---------- dashboard: each section is a soft card ---------- */
+.fd .sec {
+    margin: 0 0 12px;
+    padding: 14px 16px;
+    border: 1px solid color-mix(in srgb, var(--ac) 28%, transparent);
+    border-radius: 18px;
+    background: rgba(255, 255, 255, .03);
+}
+
+.fd .rail {
+    width: 50px;
+    padding: 10px 0;
+    border: 1px solid color-mix(in srgb, var(--ac) 28%, transparent);
+    border-radius: 18px;
+    background: rgba(255, 255, 255, .03);
+    align-self: flex-start;
+}
+
+.fd .mk {
+    border-radius: 4px;
+}
+
+.fd .bd {
+    border-radius: 999px;
+}
+
+.fd .rk {
+    border-left: 0;
+    border-radius: 12px;
+}
+
+.fd .rk.on {
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--ac) 60%, transparent);
+}
+
+.fd .bt,
+.fd .bt i {
+    border-radius: 5px;
+}
+
+.fd .tw {
+    border: 1px solid color-mix(in srgb, var(--ac) 28%, transparent);
+    border-radius: 14px;
+}
+
+.fd th button {
+    padding: 9px 10px;
+}
+
+.fd tr[aria-selected=true] {
+    box-shadow: inset 3px 0 var(--ac);
+}
+
+.fd .err,
+.fd .sk {
+    border-radius: 14px;
+}
+
+/* KPI boxes and the answer popup (built in JS with inline styles) */
+.fd [style*="var(--accent)"] {
+    border-radius: 14px;
+}
+
+.fd aside[role="dialog"] {
+    border-radius: 20px;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, .45);
+}
+
+/* scrollbars */
+.fd .dsc::-webkit-scrollbar-thumb,
+.fd .msgs::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+}
+
+/* resize grips: rounder, softer */
+.fd .rz {
+    border-radius: 6px;
+    opacity: .5;
+}
+
+/* slash line: hidden until the button is on */
+.fd .mic .slash {
+    display: none;
+}
+
+/* MUTE / DEAFEN on: red, with a diagonal line through the icon */
+.fd .mic[aria-pressed=true] {
+    color: var(--warn);
+    background: color-mix(in srgb, var(--warn) 22%, transparent);
+    border-color: var(--warn);
+}
+
+.fd .mic[aria-pressed=true] .slash {
+    display: block;
+    stroke-width: 2.6;
+}
+
+.fd .top .hu-btn.ab svg {
+    width: 22px;
+    height: 22px;
+    color: var(--ac);
+    transition: transform .2s;
+}
+
+.fd .top .hu-btn.ab:hover svg {
+    transform: scale(1.12);
+}
+
+/* each category tab uses ITS OWN accent on hover, press and when selected */
+.fd .tab {
+    --tac: color-mix(in srgb, var(--ta, var(--accent)) var(--mix), #0d1a28);
+}
+
+.fd .tab:hover {
+    background: color-mix(in srgb, var(--tac) 14%, transparent);
+}
+
+.fd .tab[aria-selected=true] {
+    background: color-mix(in srgb, var(--tac) 28%, transparent);
+    border-color: color-mix(in srgb, var(--tac) 75%, transparent);
+    box-shadow: 0 2px 10px color-mix(in srgb, var(--tac) 30%, transparent);
+}
+
+/* ---- readable "where you are": big map on top, ladder and its key side by side below ---- */
+.fd .wy { grid-template-columns: minmax(0, 1fr); gap: 18px; }
+.fd .wyl { display: grid; grid-template-columns: minmax(180px, 240px) minmax(0, 1fr); gap: 6px 22px; align-items: start; }
+.fd .wyl .sh { grid-column: 1 / -1; }
+.fd .wyl .ladder { max-height: 440px; }
+.fd .yck { gap: 9px; font-size: 17px; line-height: 1.4; }
+.fd .yck li { grid-template-columns: 24px minmax(0, 1fr); gap: 9px; }
+.fd .yck .bd, .fd .lgk .bd {
+    box-sizing: border-box; flex: none; display: inline-flex; align-items: center; justify-content: center;
+    width: 22px; height: 22px; min-width: 22px; padding: 0; margin-right: 4px; border-radius: 4px; font-size: 16px; line-height: 1;
+}
+.fd .yck li .bd { margin: 0; }
+.fd .lgx { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 6px 16px; font-size: 16px; margin: 8px 0 4px; }
+.fd .lgk { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 8px 16px; font-size: 16px; margin: 6px 0 10px; padding-top: 8px; border-top: 1px solid rgba(159, 192, 216, .18); }
+.fd .lgk .lg { align-items: flex-start; }
+.fd .lgx .lg i { width: 11px; height: 11px; flex: none; }
+.fd .chart text { font-size: 16px; }
+.fd .chart .gr { stroke-opacity: .12; }
+@media (max-width: 700px) { .fd .wyl { grid-template-columns: 1fr; } }
+
+/* ---- chat: multi-line box that grows, long words wrap ---- */
+.fd .cf { align-items: flex-end; }
+.fd .ci { resize: none; overflow-y: hidden; min-height: 40px; max-height: 150px; line-height: 1.4; white-space: pre-wrap; overflow-wrap: anywhere; font-size: 17px; box-sizing: border-box; }
+.fd .msg { font-size: 17px; line-height: 1.45; }
+
+/* ---- charts are drawn at 1:1 pixel scale: real, readable type ---- */
+.fd .chart { max-height: none; height: auto; }
+.fd .chart text { font: 16px 'Share Tech Mono', monospace; fill: var(--ink); opacity: .85; }
+.fd .ladder { width: 100%; max-width: 300px; }
+.fd .ladder text { font-size: 16px; }
+.fd .wyl { grid-template-columns: minmax(250px, 300px) minmax(0, 1fr); }
+.fd .nt { font-size: 17px; opacity: .85; }
+.fd .lgx, .fd .lgk { font-size: 17px; }
+.fd .cf { flex-wrap: wrap; }
+.fd .cf .ci { flex: 1 1 140px; }
+.fd .wyl { grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); }
+.fd .wyl .ladder { max-width: 300px; margin: 0 auto; }
+.fd .wy, .fd .wym, .fd .wyl { min-width: 0; }
+
+/* ---- horizontal oxygen ladder, selectable badges, clickable legend ---- */
+.fd .lad { overflow-x: auto; padding: 4px 0 2px; }
+.fd .ladder { width: auto; max-width: 100%; height: auto; max-height: none; display: block; margin: 0; }
+.fd .ladder text { font: 15px 'Share Tech Mono', monospace; fill: currentColor; }
+.fd .ladder .lu text { fill: #fff; font-weight: 700; }
+.fd .ladder .lm { cursor: pointer; outline: none; }
+.fd .ladder .lm:hover rect, .fd .ladder .lm:focus-visible rect { stroke-width: 3; }
+.fd .wyl { display: none; }
+.fd .ldbox { min-height: 64px; margin-top: 8px; }
+.fd .ldh { margin: 0; font-size: 16px; opacity: .8; line-height: 1.45; }
+.fd .ldc { display: flex; gap: 12px; align-items: flex-start; border: 1px solid color-mix(in srgb, var(--ac) 45%, transparent); border-radius: 14px; padding: 12px 14px; background: rgba(255, 255, 255, .03); }
+.fd .ldc.evidence { border-color: #ffb347; }
+.fd .ldc p { margin: 0 0 4px; font-size: 17px; line-height: 1.4; }
+.fd .ldc small { display: block; font-size: 15px; opacity: .8; margin-bottom: 6px; }
+.fd .ldc .bd { box-sizing: border-box; flex: none; width: 28px; height: 28px; display: inline-flex; align-items: center; justify-content: center; border-radius: 6px; padding: 0; }
+.fd .lgb { background: transparent; border: 1px solid transparent; border-radius: 10px; color: inherit; font: inherit; text-align: left; cursor: pointer; padding: 4px 8px; }
+.fd .lgb:hover { border-color: color-mix(in srgb, var(--ac) 55%, transparent); }
+.fd .lgb.on { border-color: var(--ac); background: color-mix(in srgb, var(--ac) 20%, transparent); }
+.fd .flt { margin: 4px 0 8px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; font-size: 16px; }
+.fd .sh.ls { margin-top: 18px; }
+
+/* click or drag on a graph moves the sliders */
+.fd svg.chart[data-geo] { cursor: crosshair; touch-action: none; user-select: none; }
+.fd.gd, .fd.gd * { cursor: crosshair !important; user-select: none; }
+.fd [data-k="cmap"] .wym, .fd [data-k="cspread"], .fd svg.chart, .fd .ladder, .fd .lgb { -webkit-user-select: none; user-select: none; }

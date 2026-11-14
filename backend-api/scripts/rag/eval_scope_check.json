@@ -1,0 +1,21 @@
+[
+ {
+  "id": "S01",
+  "question": "What oxygen level makes the spacecraft dangerous?",
+  "params": {
+   "scenario": "iss"
+  },
+  "keys": [
+   "xo2 = 17%"
+  ]
+ },
+ {
+  "id": "S02",
+  "question": "At what oxygen concentration can flames burn steadily?",
+  "params": {},
+  "keys": [
+   "26%",
+   "steady flames"
+  ]
+ }
+]

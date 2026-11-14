@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&display=swap');
+
+.space-intro {
+    --accent: #7fb8ff;
+    --c: 22px;
+
+    /* ===== LAUNCH BUTTON TIMING ===== */
+    --btn-delay: 2.4s;  /* wait before the title + button start to appear */
+    --btn-fade: 1.4s;   /* how long the fade-in takes */
+
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    background: #02030a;
+    overflow: hidden;
+    color: #cfe0f5;
+    font: 400 12px 'Chakra Petch', monospace;
+}
+
+.space-intro .si-mount {
+    position: absolute;
+    inset: 0;
+}
+
+.space-intro .si-mount canvas {
+    display: block;
+    position: absolute;
+    inset: 0;
+}
+
+/* top-left status panel */
+.space-intro .si-pnl {
+    position: absolute;
+    background: #0b111ae0;
+    clip-path: polygon(0 0, calc(100% - var(--c)) 0, 100% var(--c), 100% 100%, var(--c) 100%, 0 calc(100% - var(--c)));
+    border-top: 3px solid var(--accent);
+    border-left: 3px solid var(--accent);
+    z-index: 6;
+}
+
+.space-intro .si-pnl:before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: repeating-linear-gradient(135deg, transparent 0 22px, color-mix(in srgb, var(--accent) 12%, transparent) 22px 24px);
+}
+
+.space-intro .si-log {
+    left: 24px;
+    top: 20px;
+    padding: 8px 22px 8px 14px;
+    letter-spacing: 0.14em;
+    font-size: 10px;
+}
+
+.space-intro .si-log span {
+    position: relative;
+}
+
+/* title + launch button */
+.space-intro .si-hud {
+    position: absolute;
+    left: 50%;
+    bottom: 34px;
+    transform: translateX(-50%);
+    display: grid;
+    justify-items: center;
+    gap: 26px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--btn-fade) var(--btn-delay);
+    z-index: 7;
+}
+
+.space-intro .si-hud.on {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* applied once Launch is pressed: quick fade-out, no delay */
+.space-intro .si-hud.fast {
+    transition: opacity 0.4s;
+}
+
+.space-intro .si-title {
+    margin: 0;
+    text-align: center;
+    font: 700 clamp(26px, 5vw, 54px) 'Chakra Petch';
+    letter-spacing: 0.42em;
+    padding-left: 0.42em;
+    color: #eaf3ff;
+    text-shadow: 0 0 26px color-mix(in srgb, var(--accent) 60%, transparent);
+}
+
+.space-intro .si-title small {
+    display: block;
+    font: 400 11px 'Chakra Petch';
+    letter-spacing: 0.5em;
+    color: var(--accent);
+    margin-top: 8px;
+}
+
+.space-intro .si-lw {
+    position: relative;
+    width: 250px;
+    height: 62px;
+    filter: drop-shadow(0 0 14px color-mix(in srgb, var(--accent) 55%, transparent));
+}
+
+.space-intro .si-go {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    font: 700 16px 'Chakra Petch';
+    letter-spacing: 0.38em;
+    text-indent: 0.38em;
+    color: #04101c;
+    background: linear-gradient(180deg, #d6e9ff, var(--accent) 55%, #4a86d4);
+    border: 0;
+    cursor: pointer;
+    text-transform: uppercase;
+    clip-path: polygon(16px 0, calc(100% - 16px) 0, 100% 16px, 100% calc(100% - 16px), calc(100% - 16px) 100%, 16px 100%, 0 calc(100% - 16px), 0 16px);
+}
+
+.space-intro .si-go:hover {
+    filter: brightness(1.18);
+}
+
+.space-intro .si-go:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 4px;
+}
+
+.space-intro .si-ring {
+    position: absolute;
+    left: -7px;
+    top: -7px;
+    width: calc(100% + 14px);
+    height: calc(100% + 14px);
+    overflow: visible;
+    pointer-events: none;
+}
+
+.space-intro .si-ring polygon {
+    fill: none;
+    stroke: var(--accent);
+    stroke-width: 2;
+    vector-effect: non-scaling-stroke;
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: si-pulse 2.4s ease-out infinite;
+}
+
+.space-intro .si-ring.b polygon {
+    animation-delay: 1.2s;
+}
+
+@keyframes si-pulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.95;
+    }
+
+    100% {
+        transform: scale(1.3, 1.8);
+        opacity: 0;
+    }
+}
+
+/* black overlay used for the fade-out */
+.space-intro .si-fade {
+    position: absolute;
+    inset: 0;
+    background: #000;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 8;
+}

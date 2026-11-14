@@ -1,0 +1,6 @@
+# Optional HTTPS in front of the API (profile "https"): the Firebase site is https, so the browser needs https for the API too.
+# Point the DNS A record of API_DOMAIN at this server; Caddy gets and renews the certificate itself.
+{$API_DOMAIN} {
+	encode gzip
+	reverse_proxy api:8000
+}

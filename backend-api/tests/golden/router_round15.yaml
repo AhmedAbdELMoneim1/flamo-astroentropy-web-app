@@ -1,0 +1,20 @@
+# Round 15 P1: the 2026-11-12 session (chat_decisions/round15_session_transcript.txt), turn by turn, in one session. type = the expected question type, main = the expected tool of the answer.
+- {q: "what's the screen said ?", type: effect, ok: [tool, rag, both, clarify, not_found]}
+- {q: "what's iginition i see in screen ?", type: explain, main: explain, find: "Ignition is the moment", ok: [tool]}
+- {q: "i see ignition !!", type: explain, ok: [tool, rag, both, clarify]}
+- {q: "Which experiments matter most for prevention?", type: ranking, main: rank_investigations, find: "most relevant investigations", not_find: "ranked by", ok: [tool, both]}
+- {q: "ok what they cover ?", type: catalogue, main: get_investigation, ok: [tool]}
+- {q: "what's best paper appear alot in sources ?", type: papers, main: list_papers, find: "papers", ok: [tool]}
+- {q: "i said paper", type: papers, main: list_papers, ok: [tool]}
+- {q: "tell me about o2 cover", type: catalogue, ok: [tool, both]}
+- {q: "i want tests in 40%", type: nearest, main: nearest_tests, find: "Near 40 percent", ok: [tool, both]}
+- {q: "what's u cover in o2 !?", type: catalogue, main: data_ranges, ok: [tool, both]}
+- {q: "what's o2 = 18 percentage mean ?", type: interpret, main: interpret_conditions, find: "18 percent oxygen is", ok: [tool]}
+- {q: "i said what it mean !!!", type: interpret, ok: [tool, both, rag, clarify]}
+- {q: "tell me about test 19115A1", type: test, main: get_test, find: "Test 19115A1 is a flight test", ok: [tool]}
+- {q: "i want to know o2 near to 40 percentage !", type: nearest, main: nearest_tests, find: "Near 40 percent", ok: [tool, both]}
+- {q: "is this ACME Flame Design (PSI-10)\t19150A1\tC2H₄\t39.8\t14.8 (101.766671622 kPa) – danger ?", type: test, main: interpret_conditions, find: "Test 19150A1", ok: [tool]}
+- {q: "what's mean that spread rate is high ?", type: explain, main: explain, find: "Flame spread rate", ok: [tool]}
+- {q: "explain how the spread rate can effect in fabric", type: effect, ok: [tool, rag, both]}
+- {q: "fabric is danger in what's o2 percentage ?", type: effect, ok: [tool, rag, both, clarify]}
+- {q: "yes", type: effect, ok: [tool, rag, both, clarify]}

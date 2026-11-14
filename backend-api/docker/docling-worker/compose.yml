@@ -1,0 +1,16 @@
+services:
+  docling-worker:
+    image: rag-docling-worker:3
+    build:
+      context: .
+      args:
+        IMAGE_TAG: rag-docling-worker:3
+    env_file: .env
+    environment:
+      IMAGE_TAG: rag-docling-worker:3
+    volumes:
+      - worker_tmp:/work          # PDFs and outputs live here only while a file is being parsed
+    restart: "no"                 # stop it with `docker compose stop`: its leased file goes back to the queue
+    stop_grace_period: 60s
+volumes:
+  worker_tmp:

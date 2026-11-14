@@ -1,0 +1,479 @@
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&family=Share+Tech+Mono&display=swap');
+
+.control-center-root {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    background: #000;
+    overflow: hidden;
+    user-select: none;
+}
+
+.control-center-root .fo {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    background: #000;
+}
+
+.control-center-root .fo canvas {
+    display: block;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.control-center-root .fo-ui {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.control-center-root .fo-load {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: min(240px, 50vw);
+    height: 2px;
+    transform: translate(-50%, -50%);
+    background: #0d1424;
+    z-index: 6;
+}
+
+.control-center-root .fo-load i {
+    display: block;
+    height: 100%;
+    width: 0%;
+    background: #7fb8ff;
+    box-shadow: 0 0 8px #7fb8ff;
+    transition: width 0.05s linear;
+}
+
+.control-center-root .fo-skip {
+    position: absolute;
+    top: max(16px, env(safe-area-inset-top));
+    right: max(16px, env(safe-area-inset-right));
+    pointer-events: auto;
+    cursor: pointer;
+    background: rgba(5, 10, 24, 0.55);
+    color: #e8f2ff;
+    border: 2px solid #7fb8ff;
+    box-shadow: 0 0 12px #7fb8ff99, inset 0 0 10px #7fb8ff44;
+    padding: 10px 26px;
+    transform: skewX(-12deg);
+    font: 700 14px/1 "Chakra Petch", Orbitron, "Bank Gothic", "Agency FB", Eurostile, "Arial Narrow", Impact, sans-serif;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    z-index: 10;
+    transition: background 0.2s, box-shadow 0.2s;
+}
+
+.control-center-root .fo-skip:hover {
+    background: rgba(15, 30, 60, 0.75);
+    box-shadow: 0 0 18px #7fb8ffcc, inset 0 0 14px #7fb8ff66;
+}
+
+.control-center-root .fo-skip span {
+    display: block;
+    transform: skewX(12deg);
+    text-shadow: -2px 0 #ff2d55, 2px 0 #00e5ff;
+}
+
+.control-center-root .fo-skip:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 3px;
+}
+
+.control-center-root .fo-skip.glitch {
+    animation: fo-gl 0.12s steps(2) 1;
+}
+
+@keyframes fo-gl {
+    0% {
+        clip-path: inset(0 0 55% 0);
+        transform: skewX(-12deg) translateX(-6px);
+    }
+
+    50% {
+        clip-path: inset(45% 0 0 0);
+        transform: skewX(-12deg) translateX(6px);
+    }
+
+    100% {
+        clip-path: none;
+        transform: skewX(-12deg);
+    }
+}
+
+.control-center-root .fo-log {
+    position: absolute;
+    left: max(16px, env(safe-area-inset-left));
+    top: max(16px, env(safe-area-inset-top));
+    padding: 9px 26px 9px 14px;
+    color: #cfe0f5;
+    font: 400 10px/1.2 "Chakra Petch", monospace;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    background: #0b111ae0;
+    border-top: 3px solid #7fb8ff;
+    border-left: 3px solid #7fb8ff;
+    clip-path: polygon(0 0, calc(100% - 22px) 0, 100% 22px, 100% 100%, 22px 100%, 0 calc(100% - 22px));
+    z-index: 6;
+}
+
+.control-center-root .fo-log:before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(135deg, transparent 0 22px, #7fb8ff1f 22px 24px);
+    pointer-events: none;
+}
+
+.control-center-root .fo-log span {
+    position: relative;
+}
+
+.control-center-root .fo-sub {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: max(6vh, 24px);
+    text-align: center;
+    padding: 0 6vw;
+    pointer-events: none;
+    z-index: 6;
+}
+
+.control-center-root .fo-sub p {
+    margin: 0.15em 0;
+    opacity: 0;
+    color: #fff;
+    font: 500 clamp(16px, 2.3vw, 28px)/1.3 system-ui, -apple-system, "Segoe UI", sans-serif;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9), 0 0 2px #000;
+    transition: opacity 0.05s ease-out;
+}
+
+.control-center-root .fo-fade {
+    position: absolute;
+    inset: 0;
+    background: #000;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 8;
+}
+
+.control-center-root .fo-done {
+    position: absolute;
+    inset: 0;
+    z-index: 20;
+    background: #000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    color: #8a94a8;
+    font: 13px/1.4 ui-monospace, Consolas, monospace;
+}
+
+.control-center-root .fo-done-msg {
+    color: #cfe0f5;
+    letter-spacing: 0.08em;
+    font-family: "Chakra Petch", monospace;
+    font-size: 14px;
+}
+
+.control-center-root .fo-done-replay {
+    appearance: none;
+    border: 1px solid #7fb8ff88;
+    background: #0d1a2d;
+    color: #7fb8ff;
+    font-family: "Chakra Petch", monospace;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 8px 22px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.control-center-root .fo-done-replay:hover {
+    background: #142846;
+    border-color: #7fb8ff;
+    color: #fff;
+    box-shadow: 0 0 12px #7fb8ff66;
+}
+
+/* ---------- title + start button (space scene HUD) ---------- */
+.control-center-root .ss-hud {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 28px;
+    padding-bottom: max(14vh, 80px);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.8s ease, visibility 0s linear 0.8s;
+    z-index: 7;
+}
+
+.control-center-root .ss-hud.on {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.8s ease;
+}
+
+.control-center-root .ss-title {
+    margin: 0;
+    text-align: center;
+    color: #e8f2ff;
+    font: 700 clamp(36px, 7vw, 88px)/1 "Chakra Petch", sans-serif;
+    letter-spacing: 0.3em;
+    text-indent: 0.3em;
+    text-shadow: 0 0 24px #7fb8ff88, 0 0 2px #fff;
+}
+
+.control-center-root .ss-title small {
+    display: block;
+    margin-top: 0.7em;
+    font: 400 clamp(11px, 1.3vw, 16px)/1 "Chakra Petch", sans-serif;
+    letter-spacing: 0.5em;
+    text-indent: 0.5em;
+    color: #9fc4ff;
+    text-shadow: none;
+}
+
+.control-center-root .ss-lw {
+    position: relative;
+    width: 264px;
+    height: 76px;
+    pointer-events: auto;
+}
+
+.control-center-root .ss-ring {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    pointer-events: none;
+    fill: rgba(5, 10, 24, 0.55);
+    stroke: #7fb8ff;
+    stroke-width: 2;
+    vector-effect: non-scaling-stroke;
+    filter: drop-shadow(0 0 6px #7fb8ff);
+}
+
+.control-center-root .ss-ring polygon {
+    vector-effect: non-scaling-stroke;
+}
+
+/* second ring: outline only, pulsing outward */
+.control-center-root .ss-ring.b {
+    fill: none;
+    stroke-width: 1;
+    opacity: 0.6;
+    animation: ss-pulse 2.4s ease-out infinite;
+}
+
+@keyframes ss-pulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.7;
+    }
+
+    100% {
+        transform: scale(1.18, 1.35);
+        opacity: 0;
+    }
+}
+
+.control-center-root .ss-go {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    appearance: none;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    color: #e8f2ff;
+    font: 700 18px/1 "Chakra Petch", sans-serif;
+    letter-spacing: 0.3em;
+    text-indent: 0.3em;
+    text-transform: uppercase;
+    text-shadow: 0 0 10px #7fb8ff;
+    /* same octagon as the ring, so the hover fill follows the shape */
+    clip-path: polygon(18px 0, calc(100% - 18px) 0, 100% 18px, 100% calc(100% - 18px),
+            calc(100% - 18px) 100%, 18px 100%, 0 calc(100% - 18px), 0 18px);
+    transition: background 0.2s, color 0.2s;
+}
+
+.control-center-root .ss-go:hover {
+    background: rgba(127, 184, 255, 0.18);
+    color: #fff;
+}
+
+.control-center-root .ss-go:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 4px;
+}
+
+/* ---------- post-launch connecting overlay ---------- */
+.cc-connecting {
+    position: fixed;
+    inset: 0;
+    z-index: 30;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    background: #000;
+    color: #cfe0f5;
+    font: 14px/1.4 "Chakra Petch", monospace;
+    letter-spacing: 0.2em;
+}
+
+/* ---------- space page (iframe) shown after the launch fade ---------- */
+.control-center-root .cc-space {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    background: #02030a;
+    z-index: 9;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.9s ease;
+}
+
+.control-center-root .cc-space.on {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.ss-tip {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 6;
+    width: 300px;
+    padding: 14px 16px;
+    background: rgba(4, 18, 28, .84);
+    backdrop-filter: blur(6px);
+    border: 1.5px solid #7fb8ff;
+    border-left-width: 5px;
+    color: #dff0ff;
+    font-family: "Chakra Petch", "Share Tech Mono", monospace;
+    box-shadow: 0 0 18px rgba(127, 184, 255, .35);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity .18s ease;
+    clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
+    will-change: transform;
+    backface-visibility: hidden;
+}
+
+.ss-tip.on {
+    opacity: 1;
+}
+
+.ss-tip-k {
+    font-size: 11px;
+    letter-spacing: .18em;
+    color: #7fb8ff;
+}
+
+.ss-tip-n {
+    font-size: 21px;
+    font-weight: 700;
+    margin: 0 0 9px;
+    color: #fff;
+    letter-spacing: .04em;
+}
+
+.ss-tip-p:last-child {
+    margin-bottom: 0;
+}
+
+.ss-tip ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 5px;
+}
+
+.ss-tip li {
+    display: grid;
+    grid-template-columns: 62px 1fr;
+    gap: 8px;
+    font-size: 12px;
+    line-height: 1.35;
+}
+
+.ss-tip li span {
+    color: #ffb347;
+    letter-spacing: .06em;
+    font-size: 11px;
+    padding-top: 1px;
+}
+
+.ss-tip li b {
+    font-weight: 500;
+    color: #dff0ff;
+}
+
+.ss-tip-p {
+    margin: 0 0 10px;
+    font-size: 12px;
+    line-height: 1.45;
+    color: #cfe0f5;
+}
+
+.ss-tip-p:first-of-type {
+    font-size: 14px;
+    color: #eaf3ff;
+}
+
+.ss-tip-h {
+    margin: 10px 0 6px;
+    font-size: 10.5px;
+    letter-spacing: .16em;
+    color: #7fb8ff;
+}
+
+.ss-tip-tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.ss-tip-tags i {
+    font-style: normal;
+    font-size: 11px;
+    padding: 3px 9px;
+    border: 1px solid rgba(127, 184, 255, .6);
+    color: #dff0ff;
+    background: rgba(127, 184, 255, .12);
+}
+
+.ss-tip-f {
+    margin-top: 10px;
+    padding-top: 8px;
+    border-top: 1px solid rgba(127, 184, 255, .25);
+    font-size: 11.5px;
+    line-height: 1.4;
+    color: #ffb3c1;
+}
