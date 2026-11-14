@@ -46,18 +46,6 @@ Flamo answers by voice and builds a live dashboard at the same time: charts, the
 | 🕳️ | **Gaps are reported as gaps.** If the data doesn't cover a question, Flamo says so and names what's missing, instead of guessing. |
 | ⚡ | **Built for voice.** The answer pipeline has a hard time budget, with fallbacks at every step, so the spoken answer arrives in about 2–4 seconds. |
 
-## 🖼️ Screenshots
-
-<table>
-<tr>
-<td width="50%"><img src="docs/screenshots/where-you-are-chart.jpg" alt="Where you are chart"/><br/><b>Where you are.</b> Your cabin conditions (here, the ISS at 21% O₂, 14.7 psi) plotted against every PSI test, with the nearest tests and the habitat and suit design points ringed.</td>
-<td width="50%"><img src="docs/screenshots/answer-with-sources.jpg" alt="Answer card with sources"/><br/><b>Answers with sources.</b> What the authors report, the open questions, and numbered sources with a DOI or NASA PSI link for each.</td>
-</tr>
-<tr>
-<td width="50%"><img src="docs/screenshots/spacesuit-answer.jpg" alt="Spacesuit atmosphere answer"/><br/><b>Honest coverage.</b> For a spacesuit's 100% O₂ atmosphere, Flamo says no test was run in it, then gives the closest tested conditions.</td>
-<td width="50%"><img src="docs/screenshots/oxygen-vs-pressure.jpg" alt="Oxygen vs pressure chart"/><br/><b>Oxygen vs pressure.</b> Every test atmosphere in one chart, colored by investigation.</td>
-</tr>
-</table>
 
 ## 🚀 Features
 
