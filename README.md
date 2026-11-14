@@ -16,7 +16,9 @@ Ask out loud how fire behaves in microgravity. Flamo answers in seconds with num
 ![Gemini](https://img.shields.io/badge/Gemini-Live-8E75B2?logo=googlegemini&logoColor=white)
 ![Cohere](https://img.shields.io/badge/Cohere-embed%20%2B%20rerank-39594D)
 
-<img src="docs/screenshots/dashboard-flammability.jpg" alt="Flamo dashboard: Flammability and fire behavior" width="900"/>
+<!-- <img src="docs/screenshots/dashboard-flammability.jpg" alt="Flamo dashboard: Flammability and fire behavior" width="900"/> -->
+<img width="1920" height="1080" alt="01_cabin_hub_four_pillars" src="https://github.com/user-attachments/assets/9997f0b9-9c07-4e54-b5c4-bdfa64007151" />
+
 
 </div>
 
